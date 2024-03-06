@@ -134,7 +134,7 @@ The forest mesh is distributed, that is, at any time, each parallel process
 only stores a unique portion of the forest mesh, the boundaries of which are
 calculated from the SFC indices; see Fig. \autoref{fig:SpaceFillingCurves}.
 
-![Left: Quad-tree of an exemplary \forest mesh consisting of two trees
+![Left: Quad-tree of an exemplary forest mesh consisting of two trees
 ($\text{k}_{\text{0}}$, $\text{k}_{\text{1}}$) distributed over three parallel
 processes P0 to P2. The SFC is represented by a black curve tracing only the
 finest elements (leaf nodes) of each tree. Right: Sketch of the associated
