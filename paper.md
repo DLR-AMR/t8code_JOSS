@@ -128,16 +128,99 @@ be recovered from the index and the appropriate information of the coarse
 elements. The less elements the input mesh has, the more memory and runtime are
 saved through the SFC logic. t8code supports distributed coarse meshes of
 arbitrary size and complexity, which we tested for up to 370 million input
-elements~ [@burstedde_coarse_2017].
+elements [@burstedde_coarse_2017].
 
 The forest mesh is distributed, that is, at any time, each parallel process
 only stores a unique portion of the forest mesh, the boundaries of which are
-calculated from the SFC indices; see Fig. \autoref{fig:SpaceFillingCurves}.
+calculated from the SFC indices; see \autoref{fig:SpaceFillingCurves}.
 
 ![Left: Quad-tree of an exemplary forest mesh consisting of two trees
 ($\text{k}_{\text{0}}$, $\text{k}_{\text{1}}$) distributed over three parallel
 processes P0 to P2. The SFC is represented by a black curve tracing only the
 finest elements (leaf nodes) of each tree. Right: Sketch of the associated
 triangular mesh refined up to level three.\label{fig:SpaceFillingCurves}](pics/forestmesh.pdf)
+
+# Interfacing with t8code
+
+In this section we discuss the main interface of t8code and how an
+application would use it. While t8code offers various ways to interact with
+meshes and data, we restrict ourselves to the most important functionality
+here.
+
+Every application is different and comes with their own requirements, data, and
+adaptation criteria. In order to support a wide variety of use cases, our core
+philosophy for t8code is to impose as few assumptions and to offer as much
+freedom as possible. We cater for this by applying the Hollywood principle:
+"Don't call us, we'll call you!". Whenever an application needs to interact
+with the mesh, e.g., adapting the mesh, interpolating data, etc., we offer
+suitable callback handlers.
+
+The application developer implements custom callback functions and registers
+them via the t8code application programming interface (API). Any mesh
+specific details on how to access individual elements in the forest is opaque
+to the application and internally handled by t8code in an efficient manner.
+Of course, any typical application using hierarchical meshes needs to store
+data on the elements of a forest. This data might correspond to some simulated
+state variables, e.g., fluid velocity and temperature in a CFD simulation. In
+accordance to our core philosophy, the data is only loosely coupled with
+t8code's data structures. In order to properly access the application data in
+the callbacks, the data simply needs to be provided as a consecutive array with
+one entry per element enumerated in SFC order. For parallel applications,
+access to neighboring elements across parallel zones (ghost layer) is provided
+in a similar fashion.
+
+# Modularity & Extensibility
+
+A distinct feature of t8code compared to similar AMR libraries is its high
+modularity achieved by decoupling high-level from low-level algorithms and
+coming along with it the support for arbitrary element shapes and refinement
+patterns. It also allows to combine different element shapes within the same
+mesh (hybrid meshes).
+
+All high-level operations use the low-level algorithms only as a black box. For
+example, mesh adaption routines iterate through the mesh and when necessary call
+low-level algorithms for retrieving the children or the parent to
+refine or coarsen an element. In order to implement the logic of
+the adaption, however, no knowledge of the implementation details of these
+low-level functions is required.
+
+Thus, for each individual tree we can simply replace the underlying
+implementation of the low-level algorithms (e.g. from tetrahedra to hexahedra)
+without affecting the high-level functionality. We achieve this by
+encapsulating all shape-specific element operations such as parent/child
+computation, face-neighbor computation, SFC index computation and more in an
+abstract C++ base class. The different element shapes and refinement
+patterns are then specializations of this base class. Hence, t8code can be
+easily extended - also by application developers - to support other refinement
+patterns and SFCs.
+
+Moreover, this very high degree of modularity allows us to support an even
+wider range of non-standard additions. For example, the insertion of
+sub-elements to resolve hanging nodes [@Becker_hanging_faces]
+in quadrilateral meshes. Each quad element that has a hanging node is
+subdivided into a set of several triangles eliminating the hanging node.
+
+Furthermore, we added support for holes in the mesh by selectively
+deleting elements [@Lilikakis_removing]. This feature can be used to
+incorporate additional geometry information into the mesh. Similar to marking
+elements as getting refined or coarsened, we can additionally mark elements as
+getting removed. These elements will be eliminated completely from the SFC
+reducing the overall memory footprint.
+
+Addionally, we support curved hexahedra with geometry-informed
+AMR [@elsweijer_curved_2021]. Thus, information such as element volumes,
+face areas, or positions of interpolation/quadrature points in high order
+meshes can be calculated exactly with respect to the actual geometry. Another
+use case is to start with a very coarse input mesh and geometrically refine the
+mesh maxing out the performance benefits of tree-based AMR.
+
+![Strong scaling on JUWELS with tetrahedral elements. We plot the runtimes of
+Ghost and Partition routines with a refinement band from levels 8 to
+10 after four time steps. Hence, the forest mesh consists of approximately
+$1.91$ billion tetrahedra. As observed in the plot, we achieve perfect scaling
+for the Ghost algorithm in the number $G/P$ of ghosts per process. The runtime of
+Partition is below 0.1 seconds even for the largest run. More details can
+be found in [@holke_optimized_2021].
+\label{fig:t8code_strong_scaling}](pics/t8code_strong_scaling.png)
 
 # References
