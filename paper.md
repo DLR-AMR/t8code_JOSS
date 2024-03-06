@@ -35,7 +35,7 @@ affiliations:
  - name: German Aerospace Center (DLR), Institute for Software Technology, Cologne, Germany
    index: 1
 date: 06 March 2024
-bibliography: t8code\_JOSS.bib
+bibliography: paper.bib
 
 # Optional fields if submitting to a AAS journal too, see this blog post:
 # https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
