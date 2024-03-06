@@ -169,7 +169,7 @@ one entry per element enumerated in SFC order. For parallel applications,
 access to neighboring elements across parallel zones (ghost layer) is provided
 in a similar fashion.
 
-# Modularity & Extensibility
+# Modularity \& Extensibility
 
 A distinct feature of t8code compared to similar AMR libraries is its high
 modularity achieved by decoupling high-level from low-level algorithms and
