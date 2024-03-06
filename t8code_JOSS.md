@@ -96,12 +96,13 @@ The purpose of this note is to provide a brief overview and a first point of
 entrance for software developers working on codes storing data on (distributed)
 meshes. 
 
-
+<!---
 # The structure is as follows: \Secref{sec:foundations} gives a brief
 # outline of the fundamental algorithms, \Secref{sec:interface} presents the
 # interface, \Secref{sec:modularity} emphasizes the modularity of \tetcode while
 # \Secref{sec:results} shows some performance results. Finally, in
 # \Secref{sec:conclusion} we draw a conclusion and give a brief outlook.
+-->
 
 For further information beyond this short note and also for code examples, we
 refer to our Documentation and Wiki [@Holke_t8code_2022] and our other
