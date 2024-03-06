@@ -223,4 +223,55 @@ Partition is below 0.1 seconds even for the largest run. More details can
 be found in [@holke_optimized_2021].
 \label{fig:t8code_strong_scaling}](pics/t8code_strong_scaling.png)
 
+# Performance
+
+In this section we present some of our benchmark results from various
+performance studies conducted on the JUQUEEN [@juqueen_fz_juelich] and the
+JUWELS [@juwels_fz_juelich] supercomputers at the Jülich Supercomputing
+Center. t8code's Ghost and Partition routines are exceptionally fast with
+proper scaling of up to 1.1 trillion mesh elements; see
+\Tabref{tab:t8code_runtimes}, [@holke_optimized_2021].  In
+\autoref{fig:t8code_strong_scaling} we show a strong scaling result for a
+tetrahedral mesh achieving ideal strong scaling efficiency for the Ghost algorithm.
+Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
+discontinuous Galerkin method (DG) for advection-diffusion equations on
+dynamically adaptive hexahedral meshes we obverve a 12 times speed-up compared
+to non-AMR meshes with only an overall 10 to 15\% runtime contribution of
+t8code; see autoref{fig:t8code_runtimes}. 
+
++----------------+-------------------+--------------------+--------+-----------+
+| \# process     | \# elements       | \# elem. / process | Ghost  | Partition |
++:==============:+:=================:+:==========:+:==============:+:=========:+
+|     49,152     | 1,099,511,627,776 |      22,369,621    | 2.08 s |   0.73 s  |
++-------------------+----------------+--------------------+--------+-----------+
+|     98,304     | 1,099,511,627,776 |     11,184,811     | 1.43 s |   0.33 s  |
++================+===================+====================+========+===========+
+| Runtimes on JUQUEEN for the ghost layer and partitioning operations for a    |
+| distributed mesh consisting of 1.1 trillion elements.                        |
+| \label{tab:t8code_runtimes}                                                  |
++================+===================+====================+========+===========+
+
+![Runtimes on JUQUEEN of the different components of our DG prototype code
+coupled with t8code. Note that all features associated with dynamical mesh
+adaptation utilize only around 15\% of the total runtime largely independent of
+the number of processes.\label{fig:t8code_runtimes}
+](pics/t8code_runtimes_2.png)
+
+# Conclusion
+
+In this note we introduce our open source AMR library t8code. We give a brief
+overview of the fundamental algorithms and data structures, namely our modular
+SFC, and outline a general usage pattern when an application interacts with the
+library. Due to its high modularity, t8code can be easily extended for a wide
+range of use cases. Performance results confirm that t8code is a solid choice
+for mesh management in high-performance applications in the upcoming exascale
+era.
+
+Future efforts will include an integration of our techniques into simulation
+use cases with in-depth performance and accuracy evaluations. Additionally, we
+strive to extend all presented features to all element shapes and space
+dimensions. Other possible extensions that we plan to research in the near
+future are mesh adaption of prism boundary layers and the support for
+an-isotropic refinement.
+
 # References
