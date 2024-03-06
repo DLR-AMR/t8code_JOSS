@@ -230,7 +230,7 @@ performance studies conducted on the JUQUEEN [@juqueen_fz_juelich] and the
 JUWELS [@juwels_fz_juelich] supercomputers at the Jülich Supercomputing
 Center. t8code's Ghost and Partition routines are exceptionally fast with
 proper scaling of up to 1.1 trillion mesh elements; see
-\Tabref{tab:t8code_runtimes}, [@holke_optimized_2021].  In
+\autoref{tab:t8code_runtimes}, [@holke_optimized_2021].  In
 \autoref{fig:t8code_strong_scaling} we show a strong scaling result for a
 tetrahedral mesh achieving ideal strong scaling efficiency for the Ghost algorithm.
 Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
