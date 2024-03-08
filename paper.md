@@ -251,7 +251,7 @@ Search
 : individual element and therefore performs much faster than a linear
 : search [@holke_optimized_2021; @BursteddeSearch20].
 
-![Flowchart of a typical simulation code which interacts with \tetcode.
+![Flowchart of a typical simulation code which interacts with t8code.
 Information about the different operations can be found in the text.
 \label{fig:flowchart}
 ](pics/curved_hybrid.png)
