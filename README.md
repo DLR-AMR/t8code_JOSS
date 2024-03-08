@@ -10,13 +10,9 @@ the JOSS website.
 
 ## Useful links
 
-Main page
-: https://joss.readthedocs.io/en/latest/index.html
-
-Submission guidelines
-: https://joss.readthedocs.io/en/latest/submitting.html#submission-requirements
-
-Compiling the paper
-: - [Different ways](https://joss.readthedocs.io/en/latest/submitting.html#checking-that-your-paper-compiles)
-: - [JOSS Github Action](https://github.com/marketplace/actions/open-journals-pdf-generator)
-: - [Auto-commit generated PDF to Repo](https://github.com/stefanzweifel/git-auto-commit-action)
+- Main page: https://joss.readthedocs.io/en/latest/index.html
+- Submission guidelines: https://joss.readthedocs.io/en/latest/submitting.html#submission-requirements
+- Compiling the paper:
+  - [Different ways](https://joss.readthedocs.io/en/latest/submitting.html#checking-that-your-paper-compiles)
+  - [JOSS Github Action](https://github.com/marketplace/actions/open-journals-pdf-generator)
+  - [Auto-commit generated PDF to Repo](https://github.com/stefanzweifel/git-auto-commit-action)
