@@ -8,7 +8,7 @@ research software packages.
 JOSS is an academic journal (ISSN 2475-9066) with a formal peer-review process
 that is designed to improve the quality of the software submitted. Upon
 acceptance into JOSS, we mint a CrossRef DOI for your paper and we list it on
-the JOSS website.
+the [JOSS website](https://joss.theoj.org/papers/published).
 
 ## Useful links
 
