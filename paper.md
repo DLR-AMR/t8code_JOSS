@@ -169,6 +169,93 @@ one entry per element enumerated in SFC order. For parallel applications,
 access to neighboring elements across parallel zones (ghost layer) is provided
 in a similar fashion.
 
+## An example application
+
+In the following section, we want to discuss the most important high-level
+operations implemented in t8code. For this, consider a 3D numerical solver
+application that traces a flow bubble moving around a rotating cylinder. The
+application runs in parallel and the mesh is dynamically adapted in (almost)
+every time step resolving the moving bubble with higher resolution than the
+surrounding domain. These perpetual mesh changes constantly require the flow
+state data to be interpolated from one adaption step to the next. A
+visualization of such a setup might look like \autoref{fig:curved_advection}.
+
+![Meshed region of fluid flow around a rotating cylinder. The green blob
+corresponds to a bubble that is transported within the moving fluid. The mesh
+is particularly refined along the boundary of the bubble. Colors encode the
+element's distance from the bubble.
+\label{fig:curved_advection}
+](pics/curved_hybrid.png)
+
+The standard way to implement such an application is to use the following
+high-level t8code operations: New, Adapt, Balance, Interpolate,
+Partition, Ghost, Iterate. This is also illustrated in the flowchart in
+\autoref{fig:flowchart}. Next, we give more details about the different
+operations:
+
+New
+: Construct a new, uniformly refined mesh from a coarse geometry mesh. This
+: mesh is already distributed across the parallel processes. This step is usually
+: only carried out once during the preprocessing phase.
+   
+Adapt
+: Decide for each element whether to refine, coarsen, or pass according to the
+: results of a criterion provided by a custom adaption callback.
+
+Balance
+: Establishesa 2:1 balance condition, meaning that afterwards the refinement
+: levels of neighboring elements are either the same or differ by at most $\pm
+: 1$. Note, this operation only refines elements, never coarsens them.
+: Applications are free to decide whether they require the balance condition or
+: not.
+
+Interpolate
+: Interpolate data from one forest mesh to another. For each element that was
+: refined, coarsened or remained the same, an application provided callback is
+: executed deciding how to map the data onto the new mesh.
+
+Partition
+: Re-partition the mesh across all parallel processes, such that each process
+: has the same computational load (e.g. element count). Due to the SFC logic,
+: this operation is very efficient and may be carried out in each time step.
+
+Partition Data
+: Redistribute any user defined data from the original mesh to the
+: re-partitioned one. Input is an array with one entry for each element of the
+: original forest containing the application data, output is an array with one
+: entry for each element of the re-partitioned forest, containing the same data
+: (that may previously have been on a different process).
+
+Ghost
+: Compute a list of all ghost elements of the current process. Ghosts are
+: elements that are neighbors to elements of the process, but do not belong to
+: the process itself.
+
+Ghost exchange
+: Transfer application specific data across all ghost elements. Input is an
+: array of application data with one filled entry for each local element and one
+: unfilled entry for each ghost. On output the entries at the ghost elements will
+: be filled with the corresponding values from the neighbor processes.
+
+Iterate
+: Iterates through the mesh, providing face neighbor information for each
+: element passed as an argument to the callback. In our example application, it
+: is used to carry out the advection step of the bubble.
+
+Search
+: May be used additionally for extra tasks, such as searching for particles, or
+: identifying flow features. It hierarchically iterates through the mesh and
+: executes a callback function on all elements that match a given criterion.
+: Leveraging the SFC tree logic, \texttt{Search} omits large chunks of the mesh
+: if they do not match the criterion. Hence, it does not necessarily inspect each
+: individual element and therefore performs much faster than a linear
+: search [@holke_optimized_2021; @BursteddeSearch20].
+
+![Flowchart of a typical simulation code which interacts with \tetcode.
+Information about the different operations can be found in the text.
+\label{fig:flowchart}
+](pics/curved_hybrid.png)
+
 # Modularity \& Extensibility
 
 A distinct feature of t8code compared to similar AMR libraries is its high
