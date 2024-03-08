@@ -254,7 +254,7 @@ Search
 ![Flowchart of a typical simulation code which interacts with t8code.
 Information about the different operations can be found in the text.
 \label{fig:flowchart}
-](pics/curved_hybrid.png)
+](pics/t8code_flowchart.png)
 
 # Modularity \& Extensibility
 
