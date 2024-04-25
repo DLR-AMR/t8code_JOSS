@@ -10,11 +10,11 @@ tags:
 authors:
   - name: Johannes Holke
     orcid: 0000-0002-2783-3286
-    corresponding: true #
+    corresponding: true
     affiliation: 1
   - name: Johannes Markert
     orcid: 0000-0001-6297-9494
-    equal-contrib: true #
+    equal-contrib: true
     affiliation: 1
   - name: David Knapp
     orcid: 0000-0002-6305-1572
@@ -68,7 +68,7 @@ adaptation, load-balancing, ghost computation, feature search and more.
 scientific and engineering simulation codes paving the way towards
 high-performance applications of the upcoming exascale era.
 
-# Statement of need
+# Statement of Need
 
 Adaptive mesh refinement has been established as a successful approach
 for scientific and engineering simulations over the past decades
@@ -190,8 +190,6 @@ publications on `t8code` [@holke_scalable_2018; @burstedde_coarse_2017;
 @holke_optimized_2021; @burstedde_tetrahedral_2016; @Knapp20;
 @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021;
 @Lilikakis_removing; @Holke_t8code_2022].
-
-# Conflict of Interest
 
 The authors state that there are no conflicts of interest.
 
