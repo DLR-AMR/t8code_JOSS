@@ -55,7 +55,7 @@ In addition, the software associated with your submission must:
 
 - [x] A summary describing the high-level functionality and purpose of the software for a diverse, non-specialist audience.
 
-- [ ] A Statement of need section that clearly illustrates the research purpose of the software and places it in the context of related work.
+- [x] A Statement of need section that clearly illustrates the research purpose of the software and places it in the context of related work.
 
 - [x] A list of key references, including to other software addressing related
       needs. Note that the references should include full names of venues, e.g.,
