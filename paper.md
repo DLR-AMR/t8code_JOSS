@@ -137,8 +137,8 @@ t8code; see \autoref{fig:t8code_runtimes}.
 +----------------+-------------------+--------------------+--------+-----------+
 |     98,304     | 1,099,511,627,776 |     11,184,811     | 1.43 s |   0.33 s  |
 +================+===================+====================+========+===========+
-| Runtimes on JUQUEEN for the ghost layer and partitioning operations for a    |
-| distributed mesh consisting of 1.1 trillion elements.                        |
+| Table 1: Runtimes on JUQUEEN for the ghost layer and partitioning operations |
+| for a distributed mesh consisting of 1.1 trillion elements.                  |
 | \label{tab:t8code_runtimes}                                                  |
 +================+===================+====================+========+===========+
 
