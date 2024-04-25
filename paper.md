@@ -48,7 +48,7 @@ bibliography: paper.bib
 In this note we present our software library t8code for
 scalable dynamic adaptive mesh refinement (AMR) officially released in
 2022 [@Holke_t8code_2022]. t8code is written in C/C++, open source, and
-readily available at www.dlr-amr.github.io/t8code. The
+readily available at [](www.dlr-amr.github.io/t8code). The
 library provides fast and memory efficient parallel algorithms for dynamic AMR
 to handle tasks such as mesh adaptation, load-balancing, ghost computation,
 feature search and more. t8code can manage meshes with over one
@@ -60,7 +60,7 @@ exascale era.
 
 # Statement of need
 
-Adaptive mesh refinement (AMR) has been established as a successful approach
+Adaptive mesh refinement has been established as a successful approach
 for scientific and engineering simulations over the past decades
 [@TEUNISSEN2019106866; @10.1145/1268776.1268779; @doi:10.1137/0733054;
 @doi:10.1137/0715049]. By modifying the mesh resolution locally according to
@@ -71,10 +71,10 @@ challenging task, especially for parallel codes. Implementing fast and scalable
 AMR routines generally leads to a large development overhead motivating the
 need for external mesh management libraries like t8code.
 
-Currently, t8code's AMR capabalities supports vertices ($d=0$), lines ($d=1$),
-quadrilaterals, triangles ($d=2$), hexahedra, tetrahedra, prisms, and pyramids
-($d=3$). The latter having a $1:10$ refinement rule with tetrahedra emerging as
-child elements [@Knapp20]. Additionally, implementation of other refinement
+Currently, t8code's AMR routines support a wide range of element types:
+vertices, lines, quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and
+pyramids. The latter having a $1:10$ refinement rule with tetrahedra emerging
+as child elements [@Knapp20].  Additionally, implementation of other refinement
 patterns and element shapes is possible according to the specific requirements
 of the application. t8code aims to provide a comprehensive mesh management
 framework for a wide range of use cases in science and engineering
@@ -90,7 +90,7 @@ of which we store only minimal information of the finest elements (the leafs of
 the tree). We call this resulting fine mesh the forest.
 
 By enumerating the children in the refinement pattern we obtain a space-filling
-curve logic. Via these SFCs, all elements in a refinement tree are assigned an
+curve (SFC) logic. Via these SFCs, all elements in a refinement tree are assigned an
 index and are stored in linear order of these indices. Information such as
 coordinates or element neighbors do not need to be stored explicitly, but can
 be recovered from the index and the appropriate information of the coarse
@@ -113,7 +113,7 @@ supported.
 ($\text{k}_{\text{0}}$, $\text{k}_{\text{1}}$) distributed over three parallel
 processes P0 to P2. The SFC is represented by a black curve tracing only the
 finest elements (leaf nodes) of each tree. Right: Sketch of the associated
-triangular mesh refined up to level three.\label{fig:SpaceFillingCurves}](pics/forestmesh.pdf)
+hybrid mesh refined up to level three.\label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid.png)
 
 # Performance
 
