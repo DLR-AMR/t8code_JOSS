@@ -111,9 +111,9 @@ supported.
 
 ![Left: Quad-tree of an exemplary forest mesh consisting of two trees
 ($\text{k}_{\text{0}}$, $\text{k}_{\text{1}}$) distributed over three parallel
-processes P0 to P2. The SFC is represented by a black curve tracing only the
+processes p0 to p2. The SFC is represented by a black curve tracing only the
 finest elements (leaf nodes) of each tree. Right: Sketch of the associated
-hybrid mesh refined up to level three.\label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid.png)
+mixed shape mesh refined up to level three.\label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid.png)
 
 # Performance
 
@@ -122,16 +122,14 @@ which we tested for up to 370 million input elements [@burstedde_coarse_2017].
 Moreover, we present some of our benchmark results from various
 performance studies conducted on the JUQUEEN [@juqueen_fz_juelich] and the
 JUWELS [@juwels_fz_juelich] supercomputers at the Jülich Supercomputing
-Center. t8code's Ghost and Partition routines are exceptionally fast with
+Center. t8code's ghost and partition routines are exceptionally fast with
 proper scaling of up to 1.1 trillion mesh elements; see
-\autoref{tab:t8code_runtimes}, [@holke_optimized_2021].  In
-\autoref{fig:t8code_strong_scaling} we show a strong scaling result for a
-tetrahedral mesh achieving ideal strong scaling efficiency for the Ghost algorithm.
+\autoref{tab:t8code_runtimes}, [@holke_optimized_2021]. 
 Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
 discontinuous Galerkin method (DG) for advection-diffusion equations on
 dynamically adaptive hexahedral meshes we obverve a 12 times speed-up compared
-to non-AMR meshes with only an overall 10 to 15\% runtime contribution of
-t8code; see autoref{fig:t8code_runtimes}. 
+to non-AMR meshes with only an overall 15\% runtime contribution of
+t8code; see \autoref{fig:t8code_runtimes}. 
 
 +----------------+-------------------+--------------------+--------+-----------+
 | \# process     | \# elements       | \# elem. / process | Ghost  | Partition |
