@@ -45,17 +45,19 @@ bibliography: paper.bib
 
 # Summary
 
-We present our software library t8code for scalable dynamic adaptive mesh
-refinement (AMR) officially released in 2022 [@Holke_t8code_2022]. t8code is
+We present our software library `t8code` for scalable dynamic adaptive mesh
+refinement (AMR) officially released in 2022 [@Holke_t8code_2022]. `t8code` is
 written in C/C++, open source, and readily available at
-[www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code). The library provides fast and memory
+[www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code). It is developed
+and maintained at the [Institute for Software Technology](https://www.dlr.de/sc/en/)
+of the German Aerospace Center (DLR). The software library provides fast and memory
 efficient parallel algorithms for dynamic AMR to handle tasks such as mesh
-adaptation, load-balancing, ghost computation, feature search and more. t8code
-can manage meshes with over one trillion mesh elements [@holke_optimized_2021]
-and scales up to one million parallel processes [@holke_scalable_2018]. It is
-intended to be used as mesh management backend in scientific and engineering
-simulation codes paving the way towards high-performance applications of the
-upcoming exascale era.
+adaptation, load-balancing, ghost computation, feature search and more.
+`t8code` can manage meshes with over one trillion mesh elements
+[@holke_optimized_2021] and scales up to one million parallel processes
+[@holke_scalable_2018]. It is intended to be used as mesh management backend in
+scientific and engineering simulation codes paving the way towards
+high-performance applications of the upcoming exascale era.
 
 # Statement of need
 
@@ -68,20 +70,20 @@ concentrated where needed and the overall memory usage is reduced by orders of
 magnitude. However, managing adaptive meshes and associated data is a very
 challenging task, especially for parallel codes. Implementing fast and scalable
 AMR routines generally leads to a large development overhead motivating the
-need for external mesh management libraries like t8code.
+need for external mesh management libraries like `t8code`.
 
-Currently, t8code's AMR routines support a wide range of element types:
+Currently, `t8code`'s AMR routines support a wide range of element types:
 vertices, lines, quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and
 pyramids. The latter having a $1:10$ refinement rule with tetrahedra emerging
 as child elements [@Knapp20].  Additionally, implementation of other refinement
 patterns and element shapes is possible according to the specific requirements
-of the application. t8code aims to provide a comprehensive mesh management
+of the application. `t8code` aims to provide a comprehensive mesh management
 framework for a wide range of use cases in science and engineering
 applications.
 
 # Fundamental Concepts
 
-t8code is based on the concept of tree-based adaptive mesh refinement.
+`t8code` is based on the concept of tree-based adaptive mesh refinement.
 Starting point is an unstructured input mesh, which we call coarse mesh that
 describes the geometry of the computational domain. The coarse mesh elements
 are refined recursively in a structured pattern, resulting in refinement trees
@@ -100,7 +102,7 @@ boundaries of which are calculated from the SFC indices; see
 
 While in the past being successfully applied to quadrilateral
 and hexahedral meshes [@burstedde_p4est_2011; @weinzierl_peano_2019],
-t8code extends these SFC techniques in a modular fashion, such that arbitrary
+`t8code` extends these SFC techniques in a modular fashion, such that arbitrary
 element shapes are supported. We achieve this modularity through a novel
 decoupling approach that separates high-level (mesh global) algorithms from
 low-level (element local) implementations. All high-level algorithms can then
@@ -116,19 +118,19 @@ mixed shape mesh refined up to level three.\label{fig:SpaceFillingCurves}](pics/
 
 # Performance
 
-t8code supports distributed coarse meshes of arbitrary size and complexity,
+`t8code` supports distributed coarse meshes of arbitrary size and complexity,
 which we tested for up to 370 million input elements [@burstedde_coarse_2017].
 Moreover, we present some of our benchmark results from various
 performance studies conducted on the JUQUEEN [@juqueen_fz_juelich] and the
 JUWELS [@juwels_fz_juelich] supercomputers at the Jülich Supercomputing
-Center. t8code's ghost and partition routines are exceptionally fast with
+Center. `t8code`'s ghost and partition routines are exceptionally fast with
 proper scaling of up to 1.1 trillion mesh elements; see
 \autoref{tab:t8code_runtimes}, [@holke_optimized_2021]. 
 Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
 discontinuous Galerkin method (DG) for advection-diffusion equations on
 dynamically adaptive hexahedral meshes we obverve a 12 times speed-up compared
 to non-AMR meshes with only an overall 15\% runtime contribution of
-t8code; see \autoref{fig:t8code_runtimes}. 
+`t8code`; see \autoref{fig:t8code_runtimes}. 
 
 +----------------+-------------------+--------------------+--------+-----------+
 | \# process     | \# elements       | \# elem. / process | Ghost  | Partition |
@@ -143,27 +145,45 @@ t8code; see \autoref{fig:t8code_runtimes}.
 +================+===================+====================+========+===========+
 
 ![Runtimes on JUQUEEN of the different components of our DG prototype code
-coupled with t8code. Note that all features associated with dynamical mesh
+coupled with `t8code`. Note that all features associated with dynamical mesh
 adaptation utilize only around 15\% of the total runtime largely independent of
 the number of processes.\label{fig:t8code_runtimes}
 ](pics/t8code_runtimes_2.png)
 
 # Conclusion
 
-In this note, we introduce our open source AMR library t8code. We give a brief
+In this note, we introduce our open source AMR library `t8code`. We give a brief
 overview of the fundamental design principles and high-level operations. Due to
-the high modularity, t8code can be easily extended for a wide range of use
-cases. Performance results confirm that t8code is a solid choice for mesh
+the high modularity, `t8code` can be easily extended for a wide range of use
+cases. Performance results confirm that `t8code` is a solid choice for mesh
 management in high-performance applications in the upcoming exascale era.
+
+Even though `t8code` is a newcomer to the market, it is already in use as the
+mesh management backend in various research projects, most notably in the earth
+system modeling (ESM) community. In the
+[ADAPTEX](https://dlr-amr.github.io/adaptex/) project `t8code` is integrated
+with the [Trixi framework](https://trixi-framework.github.io/)
+[@schlottkelakemper2020trixi] - a modern computational fluid dynamics code
+written in [Julia](https://julialang.org/). Over the next years several ESM
+applications are planned to couple to this combination, including
+[MESSy](https://messy-interface.org),
+[MPTrac](https://helmholtz.software/software/mptrac), and
+[SERGHEI](https://helmholtz.software/software/serghei).  Moreover, `t8code`
+also plays an important role in several DLR funded projects, e.g., VISPLORE,
+HYTAZER, Greenstars and PADME-AM.
 
 For further information beyond this short note and also for code examples, we
 refer to our
 [Documentation](https://dlr-amr.github.io/t8code/pages/documentation.html) and
 [Wiki](https://github.com/DLR-AMR/t8code/wiki) reachable via our homepage
 [www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code) and our technical
-publications on t8code [@holke_scalable_2018; @burstedde_coarse_2017;
+publications on `t8code` [@holke_scalable_2018; @burstedde_coarse_2017;
 @holke_optimized_2021; @burstedde_tetrahedral_2016; @Knapp20;
 @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021;
 @Lilikakis_removing; @Holke_t8code_2022].
+
+# Conflict of Interest
+
+The authors state that there are no conflicts of interest.
 
 # References
