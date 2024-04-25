@@ -39,8 +39,8 @@ bibliography: paper.bib
 
 # Optional fields if submitting to a AAS journal too, see this blog post:
 # https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
-aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
-aas-journal: Astrophysical Journal <- The name of the AAS journal.
+# aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
+# aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
@@ -54,7 +54,7 @@ to handle tasks such as mesh adaptation, load-balancing, ghost computation,
 feature search and more. t8code can manage meshes with over one
 trillion mesh elements [@holke_optimized_2021] and scales up to one
 million parallel processes [@holke_scalable_2018]. It is intended to
-be used as mesh management back end in scientific and engineering simulation
+be used as mesh management backend in scientific and engineering simulation
 codes paving the way towards high-performance applications of the upcoming
 exascale era.
 
@@ -92,24 +92,13 @@ elements [@Knapp20]. Additionally, implementation of other refinement
 patterns and SFCs is possible according to the specific requirements of the
 application.
 
-The purpose of this note is to provide a brief overview and a first point of
-entrance for software developers working on codes storing data on (distributed)
-meshes. 
-
-<!---
-# The structure is as follows: \Secref{sec:foundations} gives a brief
-# outline of the fundamental algorithms, \Secref{sec:interface} presents the
-# interface, \Secref{sec:modularity} emphasizes the modularity of \tetcode while
-# \Secref{sec:results} shows some performance results. Finally, in
-# \Secref{sec:conclusion} we draw a conclusion and give a brief outlook.
--->
-
+In this article we provide a brief overview and a first point of entrance for
+interested developers working on codes storing data on (distributed) meshes. 
 For further information beyond this short note and also for code examples, we
 refer to our Documentation and Wiki [@Holke_t8code_2022] and our other
 technical papers on t8code
 [@holke_scalable_2018; @burstedde_coarse_2017; @holke_optimized_2021; @burstedde_tetrahedral_2016;
 @Knapp20; @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021; @Lilikakis_removing].
-
 
 # Fundamental Concepts
 
@@ -142,56 +131,24 @@ triangular mesh refined up to level three.\label{fig:SpaceFillingCurves}](pics/f
 
 # Interfacing with t8code
 
-In this section we discuss the main interface of t8code and how an
-application would use it. While t8code offers various ways to interact with
-meshes and data, we restrict ourselves to the most important functionality
-here.
-
-Every application is different and comes with their own requirements, data, and
-adaptation criteria. In order to support a wide variety of use cases, our core
-philosophy for t8code is to impose as few assumptions and to offer as much
-freedom as possible. We cater for this by applying the Hollywood principle:
-"Don't call us, we'll call you!". Whenever an application needs to interact
-with the mesh, e.g., adapting the mesh, interpolating data, etc., we offer
-suitable callback handlers.
-
 The application developer implements custom callback functions and registers
-them via the t8code application programming interface (API). Any mesh
-specific details on how to access individual elements in the forest is opaque
-to the application and internally handled by t8code in an efficient manner.
-Of course, any typical application using hierarchical meshes needs to store
-data on the elements of a forest. This data might correspond to some simulated
-state variables, e.g., fluid velocity and temperature in a CFD simulation. In
-accordance to our core philosophy, the data is only loosely coupled with
-t8code's data structures. In order to properly access the application data in
-the callbacks, the data simply needs to be provided as a consecutive array with
-one entry per element enumerated in SFC order. For parallel applications,
-access to neighboring elements across parallel zones (ghost layer) is provided
-in a similar fashion.
+them via the t8code application programming interface (API). We call this the
+Hollywood principle: "Don't call us, we'll call you!". Whenever an application
+needs to interact with the mesh, e.g., adapting the mesh, interpolating data,
+etc., we offer suitable callback handlers.  Any mesh specific details on how to
+access individual elements in the forest is opaque to the application and is
+internally handled by t8code in an efficient manner.
 
-## An example application
+In accordance to our core philosophy, any application specific data is only
+loosely coupled with t8code's data structures. In order to access the user data
+in the callbacks, the data is provided as a consecutive array with one entry
+per element enumerated in SFC order. For parallel applications, access to
+neighboring elements across parallel zones (ghost layer) is provided in a
+similar fashion.
 
-In the following section, we want to discuss the most important high-level
-operations implemented in t8code. For this, consider a 3D numerical solver
-application that traces a flow bubble moving around a rotating cylinder. The
-application runs in parallel and the mesh is dynamically adapted in (almost)
-every time step resolving the moving bubble with higher resolution than the
-surrounding domain. These perpetual mesh changes constantly require the flow
-state data to be interpolated from one adaption step to the next. A
-visualization of such a setup might look like \autoref{fig:curved_advection}.
-
-![Meshed region of fluid flow around a rotating cylinder. The green blob
-corresponds to a bubble that is transported within the moving fluid. The mesh
-is particularly refined along the boundary of the bubble. Colors encode the
-element's distance from the bubble.
-\label{fig:curved_advection}
-](pics/curved_hybrid.png)
-
-The standard way to implement such an application is to use the following
-high-level t8code operations: New, Adapt, Balance, Interpolate,
-Partition, Ghost, Iterate. This is also illustrated in the flowchart in
-\autoref{fig:flowchart}. Next, we give more details about the different
-operations:
+The standard way to to interact with t8code is to use the high-level t8code
+operations: New, Adapt, Balance, Interpolate, Partition, Ghost, Iterate. This
+is also illustrated in the flowchart in \autoref{fig:flowchart}.
 
 New
 : Construct a new, uniformly refined mesh from a coarse geometry mesh. This
@@ -264,13 +221,6 @@ coming along with it the support for arbitrary element shapes and refinement
 patterns. It also allows to combine different element shapes within the same
 mesh (hybrid meshes).
 
-All high-level operations use the low-level algorithms only as a black box. For
-example, mesh adaption routines iterate through the mesh and when necessary call
-low-level algorithms for retrieving the children or the parent to
-refine or coarsen an element. In order to implement the logic of
-the adaption, however, no knowledge of the implementation details of these
-low-level functions is required.
-
 Thus, for each individual tree we can simply replace the underlying
 implementation of the low-level algorithms (e.g. from tetrahedra to hexahedra)
 without affecting the high-level functionality. We achieve this by
@@ -281,8 +231,8 @@ patterns are then specializations of this base class. Hence, t8code can be
 easily extended - also by application developers - to support other refinement
 patterns and SFCs.
 
-Moreover, this very high degree of modularity allows us to support an even
-wider range of non-standard additions. For example, the insertion of
+Moreover, this very high degree of modularity allows t8code to support
+a wide range of non-standard capabilities. For example, the insertion of
 sub-elements to resolve hanging nodes [@Becker_hanging_faces]
 in quadrilateral meshes. Each quad element that has a hanging node is
 subdivided into a set of several triangles eliminating the hanging node.
@@ -346,19 +296,10 @@ the number of processes.\label{fig:t8code_runtimes}
 
 # Conclusion
 
-In this note we introduce our open source AMR library t8code. We give a brief
-overview of the fundamental algorithms and data structures, namely our modular
-SFC, and outline a general usage pattern when an application interacts with the
-library. Due to its high modularity, t8code can be easily extended for a wide
-range of use cases. Performance results confirm that t8code is a solid choice
-for mesh management in high-performance applications in the upcoming exascale
-era.
-
-Future efforts will include an integration of our techniques into simulation
-use cases with in-depth performance and accuracy evaluations. Additionally, we
-strive to extend all presented features to all element shapes and space
-dimensions. Other possible extensions that we plan to research in the near
-future are mesh adaption of prism boundary layers and the support for
-an-isotropic refinement.
+In this note, we introduce our open source AMR library t8code. We give a brief
+overview of the fundamental design principles and high-level operations. Due to
+the high modularity, t8code can be easily extended for a wide range of use
+cases. Performance results confirm that t8code is a solid choice for mesh
+management in high-performance applications in the upcoming exascale era.
 
 # References
