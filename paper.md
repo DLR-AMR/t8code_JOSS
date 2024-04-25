@@ -191,6 +191,11 @@ publications on `t8code` [@holke_scalable_2018; @burstedde_coarse_2017;
 @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021;
 @Lilikakis_removing; @Holke_t8code_2022].
 
+# Acknowledgement
+
+Development and maintenance of `t8code` is mainly funded by the Institute of
+Technology within the German Aerospace Center.
+
 The authors state that there are no conflicts of interest.
 
 # References
