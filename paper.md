@@ -45,18 +45,17 @@ bibliography: paper.bib
 
 # Summary
 
-In this note we present our software library t8code for
-scalable dynamic adaptive mesh refinement (AMR) officially released in
-2022 [@Holke_t8code_2022]. t8code is written in C/C++, open source, and
-readily available at [](www.dlr-amr.github.io/t8code). The
-library provides fast and memory efficient parallel algorithms for dynamic AMR
-to handle tasks such as mesh adaptation, load-balancing, ghost computation,
-feature search and more. t8code can manage meshes with over one
-trillion mesh elements [@holke_optimized_2021] and scales up to one
-million parallel processes [@holke_scalable_2018]. It is intended to
-be used as mesh management backend in scientific and engineering simulation
-codes paving the way towards high-performance applications of the upcoming
-exascale era.
+We present our software library t8code for scalable dynamic adaptive mesh
+refinement (AMR) officially released in 2022 [@Holke_t8code_2022]. t8code is
+written in C/C++, open source, and readily available at
+[www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code). The library provides fast and memory
+efficient parallel algorithms for dynamic AMR to handle tasks such as mesh
+adaptation, load-balancing, ghost computation, feature search and more. t8code
+can manage meshes with over one trillion mesh elements [@holke_optimized_2021]
+and scales up to one million parallel processes [@holke_scalable_2018]. It is
+intended to be used as mesh management backend in scientific and engineering
+simulation codes paving the way towards high-performance applications of the
+upcoming exascale era.
 
 # Statement of need
 
