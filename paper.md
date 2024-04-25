@@ -9,25 +9,34 @@ tags:
   - modularity
 authors:
   - name: Johannes Holke
-    # orcid: 0000-0000-0000-0000
-    corresponding: true # (This is how to denote the corresponding author)
-    equal-contrib: true
+    orcid: 0000-0002-2783-3286
+    corresponding: true #
     affiliation: 1
   - name: Johannes Markert
-    equal-contrib: true # (This is how you can denote equal contributions between multiple authors)
+    orcid: 0000-0001-6297-9494
+    equal-contrib: true #
     affiliation: 1
   - name: David Knapp
+    orcid: 0000-0002-6305-1572
     equal-contrib: true
     affiliation: 1
   - given-names: Lukas Dreyer
+    orcid: 0000-0001-7484-3674
+    equal-contrib: true
     affiliation: 1
   - given-names: Sandro Elsweijer
+    orcid: 0000-0002-2753-3873
+    equal-contrib: true
     affiliation: 1
   - given-names: Niklas Böing
+    equal-contrib: true
     affiliation: 1
   - given-names: Chiara Hergl
+    orcid: 0000-0002-4016-9113
+    equal-contrib: true
     affiliation: 1
   - given-names: Prasanna Ponnusamy
+    equal-contrib: true
     affiliation: 1
   - given-names: Achim Basermann
     affiliation: 1
