@@ -157,9 +157,10 @@ cases. Performance results confirm that t8code is a solid choice for mesh
 management in high-performance applications in the upcoming exascale era.
 
 For further information beyond this short note and also for code examples, we
-refer to our Documentation and Wiki [@Holke_t8code_2022] and our other
-technical papers on t8code
-[@holke_scalable_2018; @burstedde_coarse_2017; @holke_optimized_2021; @burstedde_tetrahedral_2016;
-@Knapp20; @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021; @Lilikakis_removing].
+refer to our
+[Documentation](https://dlr-amr.github.io/t8code/pages/documentation.html) and
+[Wiki](https://github.com/DLR-AMR/t8code/wiki) and our other technical papers
+on t8code [@holke_scalable_2018; @burstedde_coarse_2017; @holke_optimized_2021; @burstedde_tetrahedral_2016;
+@Knapp20; @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021; @Lilikakis_removing; @Holke_t8code_2022].
 
 # References
