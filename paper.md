@@ -137,7 +137,7 @@ proper scaling of up to 1.1 trillion mesh elements; see
 \autoref{tab:t8code_runtimes}, [@holke_optimized_2021]. 
 Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
 discontinuous Galerkin method (DG) for advection-diffusion equations on
-dynamically adaptive hexahedral meshes we obverve a 12 times speed-up compared
+dynamically adaptive hexahedral meshes we obverve a speed-up of 12 compared
 to non-AMR meshes with only an overall 15\% runtime contribution of
 `t8code`; see \autoref{fig:t8code_runtimes}. 
 
