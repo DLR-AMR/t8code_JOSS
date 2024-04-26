@@ -145,9 +145,12 @@ supported.
 
 ![Left: Quad-tree of an exemplary forest mesh consisting of two trees
 ($\text{k}_{\text{0}}$, $\text{k}_{\text{1}}$) distributed over three parallel
-processes p0 to p2. The SFC is represented by a black curve tracing only the
-finest elements (leafs) of each tree. Right: Sketch of the associated
-mixed shape mesh refined up to level three. Bottom left: The elements saved by p1 and the associated ghost  elements (non process local neighbors). \label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid.png)
+processes $\text{p}_{\text{0}}$ to $\text{p}_{\text{2}}$. The SFC is
+represented by a black curve tracing only the finest elements (leafs) of each
+tree. Right: Sketch of the associated mixed shape mesh refined up to level
+three. Bottom left: The elements saved by p1 and the associated ghost  elements
+(non process local neighbors).
+\label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid.png)
 
 # Performance
 
