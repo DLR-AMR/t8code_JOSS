@@ -137,7 +137,7 @@ and hexahedral meshes [@burstedde_p4est_2011; @weinzierl_peano_2019],
 these SFC techniques are extended by `t8code` in a modular fashion, such that arbitrary
 element shapes are supported. We achieve this modularity through a novel
 decoupling approach that separates high-level (mesh global) algorithms from
-low-level (element local) implementations. All high-level algorithms can then
+low-level (element local) implementations. All high-level algorithms can
 be applied to different implementations of element shapes and refinement
 patterns. A mix of different element shapes in the same mesh is also
 supported.
