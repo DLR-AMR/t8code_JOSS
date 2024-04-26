@@ -127,7 +127,7 @@ curve (SFC) logic. Via these SFCs, all elements in a refinement tree are assigne
 index and are stored in linear order of these indices. Information such as
 coordinates or element neighbors do not need to be stored explicitly but can
 be deducted from the index and the appropriate information of the coarse
-elements. The forest mesh can be distributed, that is, at any time, each
+mesh. The forest mesh can be distributed, that is, at any time, each
 parallel process only stores a unique portion of the forest mesh, the
 boundaries of which are calculated from the SFC indices; see
 \autoref{fig:SpaceFillingCurves}.
