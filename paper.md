@@ -142,7 +142,7 @@ to non-AMR meshes with only an overall 15\% runtime contribution of
 `t8code`; see \autoref{fig:t8code_runtimes}. 
 
 +----------------+-------------------+--------------------+--------+-----------+
-| \# process     | \# elements       | \# elem. / process | Ghost  | Partition |
+| \# Process     | \# Elements       | \# Elem. / process | Ghost  | Partition |
 +:==============:+:=================:+:==================:+:======:+:=========:+
 |     49,152     | 1,099,511,627,776 |     22,369,621     | 2.08 s |   0.73 s  |
 +----------------+-------------------+--------------------+--------+-----------+
