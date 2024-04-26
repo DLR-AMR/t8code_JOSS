@@ -132,9 +132,9 @@ parallel process only stores a unique portion of the forest mesh, the
 boundaries of which are calculated from the SFC indices; see
 \autoref{fig:SpaceFillingCurves}.
 
-While in the past being successfully applied to quadrilateral
+While being successfully applied to quadrilateral
 and hexahedral meshes [@burstedde_p4est_2011; @weinzierl_peano_2019],
-`t8code` extends these SFC techniques in a modular fashion, such that arbitrary
+these SFC techniques are extended by `t8code` in a modular fashion, such that arbitrary
 element shapes are supported. We achieve this modularity through a novel
 decoupling approach that separates high-level (mesh global) algorithms from
 low-level (element local) implementations. All high-level algorithms can then
