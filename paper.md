@@ -5,7 +5,7 @@ tags:
   - C++
   - adaptive mesh refinement
   - exascale
-  - hypbrid meshes
+  - hybrid meshes
   - modularity
 authors:
   - name: Johannes Holke
