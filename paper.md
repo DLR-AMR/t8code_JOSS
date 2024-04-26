@@ -124,7 +124,7 @@ the tree). We call this resulting fine mesh the forest.
 
 By enumerating the children in the refinement pattern we obtain a space-filling
 curve (SFC) logic. Via these SFCs, all elements in a refinement tree are assigned an
-index and are stored in linear order of these indices. Information such as
+index and are stored in the linear order of these indices. Information such as
 coordinates or element neighbors do not need to be stored explicitly but can
 be deducted from the index and the appropriate information of the coarse
 mesh. The forest mesh can be distributed, that is, at any time, each
