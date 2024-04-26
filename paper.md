@@ -189,7 +189,7 @@ refer to our
 publications on `t8code` [@holke_scalable_2018; @burstedde_coarse_2017;
 @holke_optimized_2021; @burstedde_tetrahedral_2016; @Knapp20;
 @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021;
-@Lilikakis_removing; @Holke_t8code_2022].
+@Lilikakis_removing; @Holke_t8code_2022; @Fussbroich_towards_2023].
 
 # Acknowledgement
 
