@@ -70,7 +70,7 @@ high-performance applications of the upcoming exascale era.
 
 # Statement of Need
 
-Adaptive mesh refinement has been established as a successful approach
+Adaptive Mesh Refinement has been established as a successful approach
 for scientific and engineering simulations over the past decades
 [@TEUNISSEN2019106866; @10.1145/1268776.1268779; @doi:10.1137/0733054;
 @doi:10.1137/0715049]. By modifying the mesh resolution locally according to
