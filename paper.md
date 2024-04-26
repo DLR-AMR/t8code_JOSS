@@ -7,6 +7,7 @@ tags:
   - exascale
   - hybrid meshes
   - modularity
+  - high performance computing
 authors:
   - name: Johannes Holke
     orcid: 0000-0002-2783-3286
