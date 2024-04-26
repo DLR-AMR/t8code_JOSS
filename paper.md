@@ -80,7 +80,7 @@ bibliography: paper.bib
 # Summary
 
 In this paper, we present our scalable dynamic adaptive mesh refinement (AMR)
-library `t8code` , which was officially released in 2022 [@Holke_t8code_2022].
+library `t8code`, which was officially released in 2022 [@Holke_t8code_2022].
 `t8code` is written in C/C++, open source, and readily available at
 [www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code). It is developed
 and maintained at the [Institute for Software Technology](https://www.dlr.de/sc/en/)
