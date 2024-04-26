@@ -39,6 +39,30 @@ authors:
   - given-names: Prasanna Ponnusamy
     equal-contrib: true
     affiliation: 1
+  - given-names: Jakob Fussbroich
+    orcid: 0000-0003-0784-2182
+    equal-contrib: true
+    affiliation: 1
+  - given-names: Tabea Leistikow
+    equal-contrib: true
+    affiliation: 1
+  - given-names: Florian Becker
+    orcid: 0000-0002-8384-9282
+    equal-contrib: true
+    affiliation: 1
+  - given-names: Ioannis Lilikakis
+    equal-contrib: true
+    affiliation: 1
+  - given-names: Julia Weber
+    equal-contrib: true
+    affiliation: 1
+  - given-names: Sven Goldberg
+    orcid: 0009-0008-4419-3162
+    equal-contrib: true
+    affiliation: 1
+  - given-names: Veli Ünlü
+    equal-contrib: true
+    affiliation: 1
   - given-names: Achim Basermann
     affiliation: 1
 affiliations:
