@@ -117,8 +117,7 @@ applications.
 # Fundamental Concepts
 
 `t8code` is based on the concept of tree-based adaptive mesh refinement.
-Starting point is an unstructured input mesh, which we call coarse mesh that
-describes the geometry of the computational domain. The coarse mesh elements
+Starting point for the usage of `t8code` is an unstructured input mesh, which we denote a coarse mesh. This coarse mesh describes the geometry of the computational domain. The coarse mesh elements
 are refined recursively in a structured pattern, resulting in refinement trees
 of which we store only minimal information of the finest elements (the leafs of
 the tree). We call this resulting fine mesh the forest.
