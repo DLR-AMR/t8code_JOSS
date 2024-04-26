@@ -151,7 +151,7 @@ mixed shape mesh refined up to level three.\label{fig:SpaceFillingCurves}](pics/
 # Performance
 
 `t8code` supports distributed coarse meshes of arbitrary size and complexity,
-which we tested for up to 370 million input elements [@burstedde_coarse_2017].
+which we tested for up to 370 million coarse mesh cells [@burstedde_coarse_2017].
 Moreover, we present some of our benchmark results from various
 performance studies conducted on the JUQUEEN [@juqueen_fz_juelich] and the
 JUWELS [@juwels_fz_juelich] supercomputers at the Jülich Supercomputing
