@@ -113,6 +113,9 @@ shapes is possible according to the specific requirements of the application.
 `t8code` aims to provide a comprehensive mesh management framework for a wide
 range of use cases in science and engineering applications.
 
+![Visualization (2D slice) of an adapted t8code mesh for an earth mantle convection simulation.
+\label{fig:visplore_messh}](pics/visplore-with_mesh.png)
+
 # Fundamental Concepts
 
 `t8code` is based on the concept of tree-based adaptive mesh refinement.
