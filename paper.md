@@ -114,7 +114,7 @@ shapes is possible according to the specific requirements of the application.
 range of use cases in science and engineering applications. See \autoref{fig:visplore_mesh}
 for an examplary adapted mesh managed by t8code for visualizing earth mantle convection data.
 ![Visualization (2D slice) of an adapted t8code mesh for a visualization of earth mantle convection data.
-TODO: Cut figure and post-process to make it looking nicer. \label{fig:visplore_mesh}](pics/visplore-with_mesh.png)
+\label{fig:visplore_mesh}](pics/visplore-with_mesh.png)
 
 # Fundamental Concepts
 
