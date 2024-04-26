@@ -79,8 +79,9 @@ bibliography: paper.bib
 
 # Summary
 
-In this paper, we present our scalable dynamic adaptive mesh refinement (AMR) library `t8code` , which was officially released in 2022 [@Holke_t8code_2022]. `t8code` is
-written in C/C++, open source, and readily available at
+In this paper, we present our scalable dynamic adaptive mesh refinement (AMR)
+library `t8code` , which was officially released in 2022 [@Holke_t8code_2022].
+`t8code` is written in C/C++, open source, and readily available at
 [www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code). It is developed
 and maintained at the [Institute for Software Technology](https://www.dlr.de/sc/en/)
 of the German Aerospace Center (DLR). The software library provides fast and memory
@@ -107,30 +108,30 @@ need for external mesh management libraries like `t8code`.
 
 Currently, `t8code`'s AMR routines support a wide range of element types:
 vertices, lines, quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and
-pyramids. The latter having a $1:10$ refinement rule with tetrahedra emerging
-as child elements [@Knapp20].  Additionally, implementation of other refinement
-patterns and element shapes is possible according to the specific requirements
-of the application. `t8code` aims to provide a comprehensive mesh management
-framework for a wide range of use cases in science and engineering
-applications.
+pyramids. Additionally, implementation of other refinement patterns and element
+shapes is possible according to the specific requirements of the application.
+`t8code` aims to provide a comprehensive mesh management framework for a wide
+range of use cases in science and engineering applications.
 
 # Fundamental Concepts
 
 `t8code` is based on the concept of tree-based adaptive mesh refinement.
-Starting point for the usage of `t8code` is an unstructured input mesh, which we denote a coarse mesh. This coarse mesh describes the geometry of the computational domain. The coarse mesh elements
-are refined recursively in a structured pattern, resulting in refinement trees
-of which we store only minimal information of the finest elements (the leafs of
-the tree). We call this resulting fine mesh the forest.
+Starting point for the usage of `t8code` is an unstructured input mesh, which
+we denote a coarse mesh. This coarse mesh describes the geometry of the
+computational domain.  Each of the coarse mesh cells are then viewed as the
+root of a refinement tree.  These trees are refined recursively in a structured
+pattern, resulting in a collection of trees, which we denote a forest. This
+forest stores only minimal information about the finest elements of the mesh
+(the leafs of the trees).
 
 By enumerating the children in the refinement pattern we obtain a space-filling
-curve (SFC) logic. Via these SFCs, all elements in a refinement tree are assigned an
-index and are stored in the linear order of these indices. Information such as
-coordinates or element neighbors do not need to be stored explicitly but can
-be deducted from the index and the appropriate information of the coarse
-mesh. The forest mesh can be distributed, that is, at any time, each
-parallel process only stores a unique portion of the forest mesh, the
-boundaries of which are calculated from the SFC indices; see
-\autoref{fig:SpaceFillingCurves}.
+curve (SFC) logic. Via these SFCs, all elements in a refinement tree are
+assigned an index and are stored in the linear order of these indices.
+Information such as coordinates or element neighbors do not need to be stored
+explicitly but can be deducted from the index and the appropriate information
+of the coarse mesh. The forest mesh can be distributed across multiple
+processes, so that each one only stores a unique portion of the forest mesh.
+See \autoref{fig:SpaceFillingCurves}.
 
 While being successfully applied to quadrilateral
 and hexahedral meshes [@burstedde_p4est_2011; @weinzierl_peano_2019],
@@ -181,13 +182,7 @@ adaptation utilize only around 15\% of the total runtime largely independent of
 the number of processes.\label{fig:t8code_runtimes}
 ](pics/t8code_runtimes_2.png)
 
-# Conclusion
-
-In this note, we introduce our open source AMR library `t8code`. We give a brief
-overview of the fundamental design principles and high-level operations. Due to
-the high modularity, `t8code` can be easily extended for a wide range of use
-cases. Performance results confirm that `t8code` is a solid choice for mesh
-management in high-performance applications in the upcoming exascale era.
+# Research Projects
 
 Even though `t8code` is a newcomer to the market, it is already in use as the
 mesh management backend in various research projects, most notably in the earth
@@ -203,6 +198,14 @@ applications are planned to couple to this combination, including
 also plays an important role in several DLR funded projects, e.g., VISPLORE,
 HYTAZER, Greenstars and PADME-AM.
 
+# Conclusion
+
+In this note, we introduce our open source AMR library `t8code`. We give a brief
+overview of the fundamental design principles and high-level operations. Due to
+the high modularity, `t8code` can be easily extended for a wide range of use
+cases. Performance results confirm that `t8code` is a solid choice for mesh
+management in high-performance applications in the upcoming exascale era.
+
 For further information beyond this short note and also for code examples, we
 refer to our
 [Documentation](https://dlr-amr.github.io/t8code/pages/documentation.html) and
@@ -216,7 +219,7 @@ publications on `t8code` [@holke_scalable_2018; @burstedde_coarse_2017;
 # Acknowledgement
 
 Development and maintenance of `t8code` is mainly funded by the Institute of
-Technology of the German Aerospace Center.
+Software Technology of the German Aerospace Center.
 
 The authors state that there are no conflicts of interest.
 
