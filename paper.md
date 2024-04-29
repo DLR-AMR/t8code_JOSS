@@ -180,7 +180,7 @@ see \autoref{fig:t8code_runtimes}.
 | Table 1: Runtimes on JUQUEEN for the ghost layer and partitioning operations |
 | for a distributed mesh consisting of 1.1 trillion elements.                  |
 | \label{tab:t8code_runtimes}                                                  |
-+==============================================================================+
++================+===================+====================+========+===========+
 
 ![Runtimes on JUQUEEN of the different components of our DG prototype code
 coupled with `t8code`. Note that the operations associated with dynamical mesh
