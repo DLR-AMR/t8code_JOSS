@@ -115,22 +115,22 @@ range of use cases in science and engineering applications. See \autoref{fig:vis
 for an examplary adapted mesh managed by t8code for visualizing earth mantle convection data.
 
 ![Visualization (2D slice) of an adapted t8code mesh for a visualization of earth mantle convection data.
-\label{fig:visploremesh}](pics/visplore-with_mesh.png){width="70%"}
+\label{fig:visploremesh}](pics/visplore-with_mesh.png){width="50%"}
 
 # Fundamental Concepts
 
 `t8code` is based on the concept of tree-based adaptive mesh refinement.
 Starting point for the usage of `t8code` is an unstructured input mesh, which
-we denote a coarse mesh. This coarse mesh describes the geometry of the
-computational domain.  Each of the coarse mesh cells are then viewed as the
-root of a refinement tree.  These trees are refined recursively in a structured
-pattern, resulting in a collection of trees, which we denote a forest. This
-forest stores only minimal information about the finest elements of the mesh
-(the leafs of the trees).
+we call a coarse mesh. This coarse mesh describes the geometry of the
+computational domain. Each of the coarse mesh cells are then viewed as the
+root of a refinement tree. These trees are refined recursively in a structured
+pattern, resulting in a collection of trees, which we call a forest. `t8code`
+stores only a minimal amount of information about the finest elements of the mesh -
+the leaves of the trees - in order to reconstruct the whole forest.
 
-By enumerating the children in the refinement pattern we obtain a space-filling
-curve (SFC) logic. Via these SFCs, all elements in a refinement tree are
-assigned an index and are stored in the linear order of these indices.
+By enumerating the leaves in a recursive refinement pattern we obtain a
+space-filling curve (SFC) logic. Via these SFCs, all elements in a refinement
+tree are assigned an index and are stored in the linear order of these indices.
 Information such as coordinates or element neighbors do not need to be stored
 explicitly but can be deducted from the index and the appropriate information
 of the coarse mesh. The forest mesh can be distributed across multiple
@@ -149,7 +149,7 @@ supported.
 
 ![Left: Quad-tree of an exemplary forest mesh consisting of two trees (k0, k1)
 distributed over three parallel processes p0 to p2. The SFC is represented by a
-black curve tracing only the finest elements (leafs) of each tree. Right:
+black curve tracing only the finest elements (leaves) of each tree. Right:
 Sketch of the associated mixed shape mesh refined up to level three. Bottom
 left: The elements saved by p1 and the associated ghost  elements (non process
 local neighbors).
@@ -166,9 +166,9 @@ proper scaling of up to 1.1 trillion mesh elements; see
 \autoref{tab:t8code_runtimes}, [@holke_optimized_2021]. 
 Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
 discontinuous Galerkin method (DG) for advection-diffusion equations on
-dynamically adaptive hexahedral meshes we obverve a speed-up of 12 compared
-to non-AMR meshes with only an overall 15\% runtime contribution of
-`t8code`; see \autoref{fig:t8code_runtimes}. 
+dynamically adaptive hexahedral meshes we obverve a 12 times speed-up compared
+to non-AMR meshes with only an overall 15\% runtime contribution of `t8code`;
+see \autoref{fig:t8code_runtimes}. 
 
 +----------------+-------------------+--------------------+--------+-----------+
 | \# Process     | \# Elements       | \# Elem. / process | Ghost  | Partition |
@@ -183,10 +183,11 @@ to non-AMR meshes with only an overall 15\% runtime contribution of
 +================+===================+====================+========+===========+
 
 ![Runtimes on JUQUEEN of the different components of our DG prototype code
-coupled with `t8code`. Note that all features associated with dynamical mesh
-adaptation utilize only around 15\% of the total runtime largely independent of
-the number of processes.\label{fig:t8code_runtimes}
-](pics/t8code_runtimes_2.png)
+coupled with `t8code`. Note that the operations associated with dynamical mesh
+adaptation (adapt, balance, partition, and ghost) utilize only around 15\% of
+the total runtime largely independent of the number of
+processes.\label{fig:t8code_runtimes}
+](pics/t8code_runtimes_2.png){width="70%"}
 
 # Research Projects
 
@@ -201,8 +202,11 @@ applications are planned to couple to this combination, including
 [MESSy](https://messy-interface.org),
 [MPTrac](https://helmholtz.software/software/mptrac), and
 [SERGHEI](https://helmholtz.software/software/serghei).  Moreover, `t8code`
-also plays an important role in several DLR funded projects, e.g., VISPLORE,
-HYTAZER, Greenstars and PADME-AM.
+also plays an important role in several DLR funded research projects, e.g.,
+[VisPlore](https://www.dlr.de/en/research-and-transfer/projects-and-missions/visplore)
+(massive data visualization), [HYTAZER](https://elib.dlr.de/201347/) (hydrogen tank certification), [Greenstars](https://www.dlr.de/en/ra/research-transfer/projects/dlr-projects/green-propulsion-free-flight-demonstrator-the-lander)
+(additive rocket engine manufacturing) and [PADME-AM](https://m2p2023.cimne.com/event/contribution/24a9d174-9411-11ed-b949-000c29ddfc0c) (simulation assisted
+additive manufacturing).
 
 # Conclusion
 
