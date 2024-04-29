@@ -187,7 +187,7 @@ coupled with `t8code`. Note that the operations associated with dynamical mesh
 adaptation (adapt, balance, partition, and ghost) utilize only around 15\% of
 the total runtime largely independent of the number of
 processes.\label{fig:t8code_runtimes}
-](pics/t8code_runtimes_2.png){width="70%"}
+](pics/t8code_runtimes_2.png){width="90%"}
 
 # Research Projects
 
