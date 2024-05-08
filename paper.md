@@ -115,7 +115,7 @@ range of use cases in science and engineering applications. See \autoref{fig:vis
 for an examplary adapted mesh managed by t8code for visualizing earth mantle convection data.
 
 ![Visualization (2D slice) of an adapted t8code mesh for a visualization of earth mantle convection data.
-\label{fig:visploremesh}](pics/visplore-with_mesh.png){width="50%"}
+\label{fig:visploremesh}](pics/visplore_magma_tilted_grid.png){width="50%"}
 
 # Fundamental Concepts
 
