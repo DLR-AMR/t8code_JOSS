@@ -65,4 +65,4 @@ In addition, the software associated with your submission must:
 - [x] Mention (if applicable) a representative set of past or ongoing research
       projects using the software and recent scholarly publications enabled by it.
 
-- [ ] Acknowledgement of any financial support.
+- [x] Acknowledgement of any financial support.
