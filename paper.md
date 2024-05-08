@@ -159,8 +159,8 @@ local neighbors).
 
 `t8code` supports distributed coarse meshes of arbitrary size and complexity,
 which we tested for up to 370 million coarse mesh cells [@burstedde_coarse_2017].
-Moreover, we conducted various performance studies on the JUQUEEN [@juqueen_fz_juelich] and the
-JUWELS [@juwels_fz_juelich] supercomputers at the Jülich Supercomputing
+Moreover, we conducted various performance studies on the [JUQUEEN](https://hbp-hpc-platform.fz-juelich.de/?page_id=34) and the
+[JUWELS](https://www.fz-juelich.de/en/ias/jsc/systems/supercomputers/juwels) supercomputers at the Jülich Supercomputing
 Center. `t8code`'s ghost and partition routines are exceptionally fast with
 proper scaling of up to 1.1 trillion mesh elements; see
 \autoref{tab:t8code_runtimes}, [@holke_optimized_2021]. 
