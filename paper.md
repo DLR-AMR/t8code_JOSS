@@ -115,7 +115,7 @@ range of use cases in science and engineering applications. See \autoref{fig:vis
 for an examplary adapted mesh managed by t8code for visualizing earth mantle convection data.
 
 ![Visualization (2D slice) of an adapted t8code mesh for a visualization of earth mantle convection data.
-\label{fig:visploremesh}](pics/visplore_magma_tilted_grid.png){width="50%"}
+\label{fig:visploremesh}](pics/visplore_magma_tilted_grid.png){width="70%"}
 
 # Fundamental Concepts
 
@@ -228,8 +228,16 @@ publications on `t8code` [@holke_scalable_2018; @burstedde_coarse_2017;
 
 # Acknowledgement
 
-Development and maintenance of `t8code` is mainly funded by the Institute of
-Software Technology of the German Aerospace Center.
+Johannes Holke thanks the Bonn International School Graduate School of
+Mathematics (BIGS) for funding the initial development of `t8code`.  Further
+development work was funded by the German Research Foundation as part of
+project 467255783, the European Union via NextGenerationEU and the German
+Federal Ministry of Research and Education (BMBF) as part of the ADAPTEX
+project. Development work was performed as part of the Helmholtz School
+for Data Science in Life, Earth and Energy (HDS-LEE) and received funding from
+the Helmholtz Association of German Research Centres. The development team of
+`t8code` thanks the Institute of Software Technology and the German Aerospace
+Center (DLR).
 
 The authors state that there are no conflicts of interest.
 
