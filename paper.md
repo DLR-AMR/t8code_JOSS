@@ -110,7 +110,7 @@ need for external mesh management libraries like `t8code`.
 Currently, `t8code`'s AMR routines support a wide range of element types:
 vertices, lines, quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and
 pyramids. Additionally, implementation of other refinement patterns and element
-shapes is possible according to the specific requirements of the application.
+shapes is possible.
 `t8code` aims to provide a comprehensive mesh management framework for a wide
 range of use cases in science and engineering applications. See \autoref{fig:visploremesh}
 for an examplary adapted mesh managed by t8code for visualizing earth mantle convection data.
