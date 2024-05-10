@@ -227,8 +227,8 @@ Johannes Holke thanks the Bonn International School Graduate School of
 Mathematics (BIGS) for funding the initial development of `t8code`.  Further
 development work was funded by the German Research Foundation as part of
 project 467255783, the European Union via NextGenerationEU and the German
-Federal Ministry of Research and Education (BMBF) as part of the ADAPTEX
-project. Development work was performed as part of the Helmholtz School
+Federal Ministry of Research and Education (BMBF) as part of the ADAPTEX and
+PADME-AM projects. Development work was performed as part of the Helmholtz School
 for Data Science in Life, Earth and Energy (HDS-LEE) and received funding from
 the Helmholtz Association of German Research Centres. The development team of
 `t8code` thanks the Institute of Software Technology and the German Aerospace
