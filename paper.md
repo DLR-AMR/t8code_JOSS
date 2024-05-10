@@ -129,13 +129,14 @@ stores only a minimal amount of information about the finest elements of the mes
 the leaves of the trees - in order to reconstruct the whole forest.
 
 By enumerating the leaves in a recursive refinement pattern we obtain a
-space-filling curve (SFC) logic. Via these SFCs, all elements in a refinement
+space-filling curve (SFC) logic. Via these SFC, all elements in a refinement
 tree are assigned an index and are stored in the linear order of these indices.
 Information such as coordinates or element neighbors do not need to be stored
 explicitly but can be deducted from the index and the appropriate information
-of the coarse mesh. The forest mesh can be distributed across multiple
-processes, so that each one only stores a unique portion of the forest mesh.
-See \autoref{fig:SpaceFillingCurves}.
+of the coarse mesh. Fast bitwise and integer-based SFC operations ensure optimal
+runtimes and diminish the need of memory lookups. Moreover, the SFC is used to
+distribute the forest mesh across multiple processes, so that each one only stores
+a unique portion of the forest mesh. See \autoref{fig:SpaceFillingCurves}.
 
 While being successfully applied to quadrilateral
 and hexahedral meshes [@burstedde_p4est_2011; @weinzierl_peano_2019],
