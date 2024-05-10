@@ -209,13 +209,7 @@ also plays an important role in several DLR funded research projects, e.g.,
 (additive rocket engine manufacturing) and [PADME-AM](https://m2p2023.cimne.com/event/contribution/24a9d174-9411-11ed-b949-000c29ddfc0c) (simulation assisted
 additive manufacturing).
 
-# Conclusion
-
-In this note, we introduce our open source AMR library `t8code`. We give a brief
-overview of the fundamental design principles and high-level operations. Due to
-the high modularity, `t8code` can be easily extended for a wide range of use
-cases. Performance results confirm that `t8code` is a solid choice for mesh
-management in high-performance applications in the upcoming exascale era.
+# Further Information
 
 For further information beyond this short note and also for code examples, we
 refer to our
