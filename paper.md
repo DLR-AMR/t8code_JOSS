@@ -119,8 +119,8 @@ earth mantle convection data.
 
 # Fundamental Concepts
 
-`t8code` is based on the concept of tree-based adaptive mesh refinement.
-Starting point for the usage of `t8code` is an unstructured input mesh, which
+`t8code` is based on the forest-of-trees approach. Starting point
+for the usage of `t8code` is an unstructured input mesh, which
 we call a coarse mesh. This coarse mesh describes the geometry of the
 computational domain. Each of the coarse mesh cells are then viewed as the
 root of a refinement tree. These trees are refined recursively in a structured
