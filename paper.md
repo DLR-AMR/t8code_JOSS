@@ -114,7 +114,7 @@ shapes is possible.
 See \autoref{fig:visploremesh} for an examplary adapted mesh managed by `t8code` for visualizing
 earth mantle convection data.
 
-![Visualization (2D slice) of an adapted t8code mesh for a visualization of earth mantle convection data.
+![Visualization (2D slice) of an adapted `t8code` mesh for a visualization of earth mantle convection data.
 \label{fig:visploremesh}](pics/visplore_magma_tilted_grid.png){width="70%"}
 
 # Fundamental Concepts
