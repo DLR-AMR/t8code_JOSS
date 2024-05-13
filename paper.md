@@ -154,7 +154,7 @@ black curve tracing only the finest elements (leaves) of each tree. Right:
 Sketch of the associated mixed shape mesh refined up to level three. Bottom
 left: The elements saved by p1 and the associated ghost elements (non process
 local neighbors).
-\label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid.png)
+\label{fig:SpaceFillingCurves}](pics/SFC.png)
 
 # Performance
 
