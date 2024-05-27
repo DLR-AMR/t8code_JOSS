@@ -221,7 +221,7 @@ publications on `t8code` [@holke_scalable_2018; @burstedde_coarse_2017;
 @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021;
 @Lilikakis_removing; @Holke_t8code_2022; @Fussbroich_towards_2023].
 
-# Acknowledgement
+# Acknowledgements
 
 Johannes Holke thanks the Bonn International School Graduate School of
 Mathematics (BIGS) for funding the initial development of `t8code`.  Further
