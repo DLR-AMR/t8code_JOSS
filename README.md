@@ -1,6 +1,10 @@
 # JOSS paper about t8code
 
-** This paper is work-in-progress. **
+View the paper: [paper.pdf](https://github.com/DLR-AMR/t8code_JOSS/blob/main/paper.pdf).
+
+Edit the paper: [paper.md](https://github.com/DLR-AMR/t8code_JOSS/blob/main/paper.md)
+
+## Intro
 
 The Journal of Open Source Software (JOSS) is a developer friendly journal for
 research software packages.
@@ -35,7 +39,7 @@ t8code specific checklist of the submission requirements as given by JOSS:
 
 - [x] Your paper must not focus on new research results accomplished with the software.
 
-- [ ] Your paper (paper.md and BibTeX files, plus any figures) must be hosted
+- [x] Your paper (paper.md and BibTeX files, plus any figures) must be hosted
       in a Git-based repository together with your software (although they may be
       in a short-lived branch which is never merged with the default).
 
