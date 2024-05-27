@@ -114,7 +114,7 @@ shapes is possible.
 See \autoref{fig:visploremesh} for an examplary adapted mesh managed by `t8code` for visualizing
 earth mantle convection data.
 
-![Visualization (2D slice) of an adapted `t8code` mesh for a visualization of earth mantle convection data.
+![2D slice of an adapted `t8code` mesh for a visualization of earth mantle convection data.
 \label{fig:visploremesh}](pics/visplore_magma_tilted_grid.png){width="70%"}
 
 # Fundamental Concepts
@@ -129,14 +129,14 @@ stores only a minimal amount of information about the finest elements of the mes
 the leaves of the trees - in order to reconstruct the whole forest.
 
 By enumerating the leaves in a recursive refinement pattern we obtain a
-space-filling curve (SFC) logic. Via these SFC, all elements in a refinement
-tree are assigned an index and are stored in the linear order of these indices.
-Information such as coordinates or element neighbors do not need to be stored
-explicitly but can be deducted from the index and the appropriate information
-of the coarse mesh. Fast bitwise and integer-based SFC operations ensure optimal
-runtimes and diminish the need for memory lookups. Moreover, the SFC is used to
-distribute the forest mesh across multiple processes, so that each one only stores
-a unique portion of the forest mesh. See \autoref{fig:SpaceFillingCurves}.
+space-filling curve (SFC) logic. Via these SFCs, all elements in a refinement
+tree are assigned an integer-based index and are stored in linear order.
+Element coordinates or element neighbors do not need to be stored explicitly
+but can be reconstructed from the SFC index. Fast bitwise SFC operations ensure
+optimal runtimes and diminish the need for memory lookups. Moreover, the SFC
+is used to distribute the forest mesh across multiple processes, so that each
+process only stores a unique portion of the SFC.  See
+\autoref{fig:SpaceFillingCurves}.
 
 While being successfully applied to quadrilateral
 and hexahedral meshes [@burstedde_p4est_2011; @weinzierl_peano_2019],
@@ -159,17 +159,17 @@ local neighbors).
 # Performance
 
 `t8code` supports distributed coarse meshes of arbitrary size and complexity,
-which we tested for up to 370 million coarse mesh cells [@burstedde_coarse_2017].
-Moreover, we conducted various performance studies on the [JUQUEEN](https://hbp-hpc-platform.fz-juelich.de/?page_id=34) and the
-[JUWELS](https://www.fz-juelich.de/en/ias/jsc/systems/supercomputers/juwels) supercomputers at the Jülich Supercomputing
+which we tested for up to 370 million coarse mesh cells
+[@burstedde_coarse_2017].  Moreover, we conducted various performance studies
+on the JUQUEEN and the JUWELS supercomputers at the Jülich Supercomputing
 Center. `t8code`'s ghost and partition routines are exceptionally fast with
 proper scaling of up to 1.1 trillion mesh elements; see
-\autoref{tab:t8code_runtimes}, [@holke_optimized_2021]. 
-Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
-discontinuous Galerkin method (DG) for advection-diffusion equations on
-dynamically adaptive hexahedral meshes we obverve a 12 times speed-up compared
-to non-AMR meshes with only an overall 15\% runtime contribution of `t8code`;
-see \autoref{fig:t8code_runtimes}. 
+\autoref{tab:t8code_runtimes}, [@holke_optimized_2021].  Furthermore, in a
+prototype code [@Dreyer2021] implementing a high-order discontinuous Galerkin
+method (DG) for advection-diffusion equations on dynamically adaptive
+hexahedral meshes we obverve a 12 times speed-up compared to non-AMR meshes
+with only an overall 15\% runtime contribution of `t8code`; see
+\autoref{fig:t8code_runtimes}. 
 
 +----------------+-------------------+--------------------+--------+-----------+
 | \# Process     | \# Elements       | \# Elem. / process | Ghost  | Partition |
@@ -215,7 +215,7 @@ For further information beyond this short note and also for code examples, we
 refer to our
 [Documentation](https://dlr-amr.github.io/t8code/pages/documentation.html) and
 [Wiki](https://github.com/DLR-AMR/t8code/wiki) reachable via our homepage
-[www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code) and our technical
+[dlr-amr.github.io/t8code](https://dlr-amr.github.io/t8code/) and our technical
 publications on `t8code` [@holke_scalable_2018; @burstedde_coarse_2017;
 @holke_optimized_2021; @burstedde_tetrahedral_2016; @Knapp20;
 @Becker_hanging_faces; @elsweijer_curved_2021; @Dreyer2021;
@@ -231,7 +231,7 @@ Federal Ministry of Research and Education (BMBF) as part of the ADAPTEX and
 PADME-AM projects. Development work was performed as part of the Helmholtz School
 for Data Science in Life, Earth and Energy (HDS-LEE) and received funding from
 the Helmholtz Association of German Research Centres. The development team of
-`t8code` thanks the Institute of Software Technology and the German Aerospace
+`t8code` thanks the Institute for Software Technology and the German Aerospace
 Center (DLR).
 
 The authors state that there are no conflicts of interest.
