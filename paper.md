@@ -134,7 +134,7 @@ tree are assigned an index and are stored in the linear order of these indices.
 Information such as coordinates or element neighbors do not need to be stored
 explicitly but can be deducted from the index and the appropriate information
 of the coarse mesh. Fast bitwise and integer-based SFC operations ensure optimal
-runtimes and diminish the need of memory lookups. Moreover, the SFC is used to
+runtimes and diminish the need for memory lookups. Moreover, the SFC is used to
 distribute the forest mesh across multiple processes, so that each one only stores
 a unique portion of the forest mesh. See \autoref{fig:SpaceFillingCurves}.
 
