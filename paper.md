@@ -11,10 +11,10 @@ tags:
 authors:
   - name: Johannes Holke
     orcid: 0000-0002-2783-3286
-    corresponding: true
     affiliation: 1
   - name: Johannes Markert
     orcid: 0000-0001-6297-9494
+    corresponding: true
     equal-contrib: true
     affiliation: 1
   - name: David Knapp
