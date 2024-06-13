@@ -57,7 +57,7 @@ authors:
     orcid: 0000-0001-9843-1041
     affiliation: 2
 affiliations:
- - name: German Aerospace Center (DLR), Institute for Software Technology, Cologne, Germany
+ - name: German Aerospace Center (DLR), Institute of Software Technology, Department High-Performance Computing, Cologne, Germany
    index: 1
  - name: Rheinische Friedrich-Wilhelms-Universität Bonn, Institute for Numerical Simulations and Hausdorff Center for Mathematics,  Germany
    index: 2
