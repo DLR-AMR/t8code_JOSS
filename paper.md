@@ -57,7 +57,7 @@ authors:
     orcid: 0000-0001-9843-1041
     affiliation: 2
 affiliations:
- - name: German Aerospace Center (DLR), Institute for Software Technology, Cologne, Germany
+ - name: German Aerospace Center (DLR), Institute of Software Technology, Cologne, Germany
    index: 1
  - name: Rheinische Friedrich-Wilhelms-Universität Bonn, Institute for Numerical Simulations and Hausdorff Center for Mathematics,  Germany
    index: 2
@@ -76,7 +76,7 @@ In this paper, we present our scalable dynamic adaptive mesh refinement (AMR)
 library `t8code`, which was officially released in 2022 [@Holke_t8code_2022].
 `t8code` is written in C/C++, open source, and readily available at
 [www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code). It is developed
-and maintained at the [Institute for Software Technology](https://www.dlr.de/sc/en/)
+and maintained at the [Institute of Software Technology](https://www.dlr.de/sc/en/)
 of the German Aerospace Center (DLR). The software library provides fast and memory
 efficient parallel algorithms for dynamic AMR to handle tasks such as mesh
 adaptation, load-balancing, ghost computation, feature search and more.
@@ -223,7 +223,7 @@ Federal Ministry of Research and Education (BMBF) as part of the ADAPTEX and
 PADME-AM projects. Development work was performed as part of the Helmholtz School
 for Data Science in Life, Earth and Energy (HDS-LEE) and received funding from
 the Helmholtz Association of German Research Centres. The development team of
-`t8code` thanks the Institute for Software Technology and the German Aerospace
+`t8code` thanks the Institute of Software Technology and the German Aerospace
 Center (DLR).
 
 The authors state that there are no conflicts of interest.
