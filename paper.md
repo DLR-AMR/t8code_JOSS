@@ -114,7 +114,7 @@ earth mantle convection data.
 `t8code` is based on the forest-of-trees approach. Starting point
 for the usage of `t8code` is an unstructured input mesh, which
 we denote a coarse mesh. This coarse mesh describes the geometry of the
-computational domain. Each of the coarse mesh cells are then viewed as the
+computational domain. Each of the coarse mesh cells is then viewed as the
 root of a refinement tree. These trees are refined recursively in a structured
 pattern, resulting in a collection of trees, which we call a forest. `t8code`
 stores only a minimal amount of information about the finest elements of the mesh -
