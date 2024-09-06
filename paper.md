@@ -133,7 +133,7 @@ computational domain. Each of the coarse mesh cells is then viewed as the
 root of a refinement tree. These trees are refined recursively in a structured
 pattern, resulting in a collection of trees, which we call a forest. `t8code`
 stores only a minimal amount of information about the finest elements of the mesh -
-the leaves of the trees - in order to reconstruct the whole forest.
+he leaves of the trees - in order to reconstruct the whole forest.
 
 By enumerating the leaves in a recursive refinement pattern we obtain a
 space-filling curve (SFC) logic. Via these SFCs, all elements in a refinement
@@ -174,33 +174,42 @@ level three. \label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid_tree_vs_mesh
 which we tested for up to 370 million coarse mesh cells
 [@burstedde_coarse_2017].  Moreover, we conducted various performance studies
 on the JUQUEEN and the JUWELS supercomputers at the Jülich Supercomputing
-Center. `t8code`'s ghost and partition routines are exceptionally fast with
-proper scaling of up to 1.1 trillion mesh elements; see
-\autoref{tab:t8code_runtimes}, [@holke_optimized_2021].  Furthermore, in a
-prototype code [@Dreyer2021] implementing a high-order discontinuous Galerkin
-method (DG) for advection-diffusion equations on dynamically adaptive
-hexahedral meshes we obverve a 12 times speed-up compared to non-AMR meshes
-with only an overall 15\% runtime contribution of `t8code`; see
-\autoref{fig:t8code_runtimes}. 
+Center. In \autoref{tab:t8code_runtimes}, [@holke_optimized_2021] we show that
+`t8code`'s ghost routine is exceptionally fast with proper scaling of up to 1.1
+trillion mesh elements. Computing ghost layers around parallel domains is
+usually the most expensive of all mesh operation. Furthermore, in a prototype
+code [@Dreyer2021] implementing a high-order discontinuous Galerkin method (DG)
+for advection-diffusion equations on dynamically adaptive hexahedral meshes we
+can report of a 12 times speed-up compared to non-AMR meshes with only an
+overall 15\% runtime contribution of `t8code`. In fig.
+\autoref{fig:t8code_runtimes} we compare the runtimes over number of processes
+of the DG solver and the summed mesh operations done by t8code which are ghost
+computation, ghost data exchange, partitioning (load balancing), refinement and
+coarsening as well as balancing ensuring only a difference of one refinement
+level among element's face neighbors. Additionally, from the graph we see the
+weak scaling property of the application, i.e. the runtime halves when doubling
+the number of processes.
 
-+----------------+-------------------+--------------------+--------+-----------+
-| \# Process     | \# Elements       | \# Elem. / process | Ghost  | Partition |
-+:==============:+:=================:+:==================:+:======:+:=========:+
-|     49,152     | 1,099,511,627,776 |     22,369,621     | 2.08 s |   0.73 s  |
-+----------------+-------------------+--------------------+--------+-----------+
-|     98,304     | 1,099,511,627,776 |     11,184,811     | 1.43 s |   0.33 s  |
-+================+===================+====================+========+===========+
-| Table 1: Runtimes on JUQUEEN for the ghost layer and partitioning operations |
-| for a distributed mesh consisting of 1.1 trillion elements.                  |
-| \label{tab:t8code_runtimes}                                                  |
-+================+===================+====================+========+===========+
++----------------+-------------------+--------------------+--------+
+| \# Process     | \# Elements       | \# Elem. / process |  Ghost |
++:==============:+:=================:+:==================:+:======:+
+|     49,152     | 1,099,511,627,776 |     22,369,621     | 2.08 s |
++----------------+-------------------+--------------------+--------+
+|     98,304     | 1,099,511,627,776 |     11,184,811     | 1.43 s |
++================+===================+====================+========+
+| Table 1: Runtimes on JUQUEEN for the ghost layer                 |
+| computation for a distributed mesh consisting of 1.1 trillion    |
+| elements. \label{tab:t8code_runtimes}                            |
++================+===================+====================+========+
 
-![Runtimes on JUQUEEN of the different components of our DG prototype code
-coupled with `t8code`. Note that the operations associated with dynamical mesh
-adaptation (adapt, balance, partition, and ghost) utilize only around 15\% of
-the total runtime largely independent of the number of
-processes.\label{fig:t8code_runtimes}
-](pics/t8code_runtimes_2.png){width="90%"}
+![Runtimes on JUQUEEN of the solver and summed mesh operations of our DG
+prototype code coupled with `t8code`. Mesh operations are ghost computation,
+ghost data exchange, partitioning (load balancing), refinement and coarsening
+as well as balancing. t8code only takes around 15\% of the overall runtime.
+Additionally, we see the weak scaling property of the application, i.e. the
+runtime halves when doubling the number of processes.
+\label{fig:t8code_runtimes}
+](pics/t8code-runtimes-simple.png){width="90%"}
 
 # Research Projects
 
