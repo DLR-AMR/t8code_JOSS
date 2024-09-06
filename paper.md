@@ -102,31 +102,36 @@ challenging task, especially for parallel codes. Implementing fast and scalable
 AMR routines generally leads to a large development overhead motivating the
 need for external mesh management libraries like `t8code`. Our libraries target
 audience are scientists and application developers working on grid-based
-simulation and visulization frameworks who are looking for a comprehensive and
+simulation and visualization frameworks who are looking for a comprehensive and
 versatile mesh management solution. Besides offering AMR we also aim to lower
 the threshold to parallelize their codes by solely interacting with t8code's
-API. Alternative AMR librarries with a similar range of features are p4est
+API. Alternative AMR libraries with a similar range of features are p4est
 [@BursteddeWilcoxGhattas11], libMesh [@libMeshPaper], ParaMesh [@macneice2000paramesh], and
 SAMRAI [@gunney2013scalable]. 
 
-In constrast to the other AMR solutions, only `t8code` natively supports
+In contrast to the other AMR solutions, only `t8code` natively supports
 recursive refinement on a wide range of element types: vertices, lines,
 quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and pyramids
 Additionally, extensions to other refinement patterns and element shapes are
 straightforwardly supported due to `t8code`s modular code structure and clear
 distinction between low- and high-level mesh operations [@holke2023t8code].
 Application developers usually interact with `t8code` via a callback interface.
-This gives our AMR solution a unique position in the market catering for a wide
-range of use cases. More information on `t8code`s feature set and on how to include
-it in an application can be found in [@holke2023t8code].
+This gives our AMR solution an unique position in the market catering for a
+wide range of use cases. Currently, `t8code` is optimized for grid-based
+applications using face-to-face connectivity between elements, such as
+Finite-Volume and Discontinuous Galerkin methods. In the future, we plan to
+support node-to-node connectivity and hanging nodes resolution to further
+increase the range of applications, such as Finite Element methods. More
+information on `t8code`s feature set and on how to include it in an application
+can be found in [@holke2023t8code].
 
 See \autoref{fig:visploremesh} for an examplary adapted mesh managed by
 `t8code` using two different element types: quads and triangles. Shown is the
 temperature profile of a convection simulation of a model planet's mantle
 (source: Institute of Planetary Research, DLR). The original, uniform mesh
 consists of over 158 million quad cells allocating 6.818 GB of memory.  By
-applying AMR to the data the memory usuage could be reduced down to 20\% with
-an compression error of less then 1\%. The error meassure was chosen to be the
+applying AMR to the data the memory usage could be reduced down to 20\% with
+an compression error of less then 1\%. The error measure was chosen to be the
 norm of the variance between refinement resp. coarsening steps. That is,
 starting from the uniform mesh at highest refinement level ($l = 8$), the mesh
 was successively coarsened till the disagreement from the original data reached
@@ -135,12 +140,12 @@ flexible adaptive mesh management. The layout of the data inside an element and
 its interpretation regarding, for example, when and how to refine/coarsen is up
 to the application.
 
-![Visulization of a planetary mantle convection simulation (source: Institute
-of Planetary Research, DLR). Shown is the 2D slice of the temperatur profile.
+![Visualization of a planetary mantle convection simulation (source: Institute
+of Planetary Research, DLR). Shown is the 2D slice of the temperature profile.
 Left: original uniform data. The highlighting of the grid lines was omitted for
 visual clarity. Middle: adapted mesh with quad elements. Right: adapted mesh
 with triangle elements. The original data living on a uniform quad mesh was
-first transfered to a triangle mesh and adapted afterwards. This shows the
+first transferred to a triangle mesh and adapted afterwards. This shows the
 versatility of t8code regarding to the choice of mesh elements. \label{fig:visploremesh}](pics/Gaia_original_vs_AMR.png)
 
 # Fundamental Concepts
@@ -174,8 +179,8 @@ be applied to different implementations of element shapes and refinement
 patterns. A mix of different element shapes in the same mesh is also
 supported.
 
-Mesh adapation as it is done in t8code leads to hanging nodes. Numerical
-methods have to speficially handle these non-conforming interfaces.
+Mesh adaptation as it is done in t8code leads to hanging nodes. Numerical
+methods have to specifically handle these non-conforming interfaces.
 Finite-Volume schemes or Discontinuous Galerkin methods naturally treat this
 problem via so-called mortar methods. In the future, it is planned to also
 support hanging nodes resolving routines by inserting transition elements
