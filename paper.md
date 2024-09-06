@@ -100,13 +100,13 @@ concentrated where needed and the overall memory usage is reduced by orders of
 magnitude. However, managing adaptive meshes and associated data is a very
 challenging task, especially for parallel codes. Implementing fast and scalable
 AMR routines generally leads to a large development overhead motivating the
-need for external mesh management libraries like `t8code`. Our libraries target
-audience are scientists and application developers working on grid-based
+need for external mesh management libraries like `t8code`. Our target
+audiences are scientists and application developers working on grid-based
 simulation and visualization frameworks who are looking for a comprehensive and
 versatile mesh management solution. Besides offering AMR we also aim to lower
 the threshold to parallelize their codes by solely interacting with t8code's
 API. Alternative AMR libraries with a similar range of features are p4est
-[@BursteddeWilcoxGhattas11], libMesh [@libMeshPaper], ParaMesh [@macneice2000paramesh], and
+[@BursteddeWilcoxGhattas11], libMesh [@libMeshPaper], PARAMESH [@macneice2000paramesh], and
 SAMRAI [@gunney2013scalable]. 
 
 In contrast to the other AMR solutions, only `t8code` natively supports
