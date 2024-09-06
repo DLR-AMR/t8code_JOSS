@@ -32,11 +32,7 @@ authors:
   - given-names: Niklas Böing
     equal-contrib: true
     affiliation: 1
-  - given-names: Chiara Hergl
-    orcid: 0000-0002-4016-9113
-    equal-contrib: true
-    affiliation: 1
-  - given-names: Prasanna Ponnusamy
+  - given-names: Ioannis Lilikakis
     equal-contrib: true
     affiliation: 1
   - given-names: Jakob Fussbroich
@@ -50,12 +46,13 @@ authors:
     orcid: 0000-0002-8384-9282
     equal-contrib: true
     affiliation: 1
-  - given-names: Ioannis Lilikakis
-    equal-contrib: true
-    affiliation: 1
   - name: Carsten Burstedde
     orcid: 0000-0001-9843-1041
     affiliation: 2
+  - name: Achim Basermann
+    orcid: 0000-0003-3637-3231
+    affiliation: 1
+
 affiliations:
  - name: German Aerospace Center (DLR), Institute of Software Technology, Department High-Performance Computing, Cologne, Germany
    index: 1
@@ -113,7 +110,7 @@ In contrast to the other AMR solutions, only `t8code` natively supports
 recursive refinement on a wide range of element types: vertices, lines,
 quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and pyramids
 Additionally, extensions to other refinement patterns and element shapes are
-straightforwardly supported due to `t8code`s modular code structure and clear
+straightforwardly supported due to `t8code`'s modular code structure and clear
 distinction between low- and high-level mesh operations [@holke2023t8code].
 Application developers usually interact with `t8code` via a callback interface.
 This gives our AMR solution an unique position in the market catering for a
@@ -122,10 +119,12 @@ applications using face-to-face connectivity between elements, such as
 Finite-Volume and Discontinuous Galerkin methods. In the future, we plan to
 support node-to-node connectivity and hanging nodes resolution to further
 increase the range of applications, such as Finite Element methods. More
-information on `t8code`s feature set and on how to include it in an application
+information on `t8code`'s feature set and on how to include it in an application
 can be found in [@holke2023t8code].
 
-See \autoref{fig:visploremesh} for an examplary adapted mesh managed by
+# Exemplary application
+
+\autoref{fig:visploremesh} depicts an examplary adapted mesh managed by
 `t8code` using two different element types: quads and triangles. Shown is the
 temperature profile of a convection simulation of a model planet's mantle
 (source: Institute of Planetary Research, DLR). The original, uniform mesh
@@ -157,7 +156,7 @@ computational domain. Each of the coarse mesh cells is then viewed as the
 root of a refinement tree. These trees are refined recursively in a structured
 pattern, resulting in a collection of trees, which we call a forest. `t8code`
 stores only a minimal amount of information about the finest elements of the mesh -
-he leaves of the trees - in order to reconstruct the whole forest.
+the leaves of the trees - in order to reconstruct the whole forest.
 
 By enumerating the leaves in a recursive refinement pattern we obtain a
 space-filling curve (SFC) logic. Via these SFCs, all elements in a refinement
@@ -205,14 +204,14 @@ usually the most expensive of all mesh operation. Furthermore, in a prototype
 code [@Dreyer2021] implementing a high-order discontinuous Galerkin method (DG)
 for advection-diffusion equations on dynamically adaptive hexahedral meshes we
 can report of a 12 times speed-up compared to non-AMR meshes with only an
-overall 15\% runtime contribution of `t8code`. In fig.
-\autoref{fig:t8code_runtimes} we compare the runtimes over number of processes
-of the DG solver and the summed mesh operations done by t8code which are ghost
-computation, ghost data exchange, partitioning (load balancing), refinement and
-coarsening as well as balancing ensuring only a difference of one refinement
-level among element's face neighbors. Additionally, from the graph we see the
-weak scaling property of the application, i.e. the runtime halves when doubling
-the number of processes.
+overall 15\% runtime contribution of `t8code`. In \autoref{fig:t8code_runtimes}
+we compare the runtimes over number of processes of the DG solver and the
+summed mesh operations done by t8code which are ghost computation, ghost data
+exchange, partitioning (load balancing), refinement and coarsening as well as
+balancing ensuring only a difference of one refinement level among element's
+face neighbors. Additionally, from the graph we see the weak scaling property
+of the application, i.e. the runtime halves when doubling the number of
+processes.
 
 +----------------+-------------------+--------------------+--------+
 | \# Process     | \# Elements       | \# Elem. / process |  Ghost |
