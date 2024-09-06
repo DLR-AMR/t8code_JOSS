@@ -114,8 +114,7 @@ Additionally, extensions to other refinement patterns and element shapes are
 straightforwardly supported due to `t8code`'s modular code structure and clear
 distinction between low- and high-level mesh operations [@holke2023t8code].
 This gives our AMR solution an unique position in the market catering for a
-wide range of use cases.  Application developers usually interact with `t8code`
-via a callback interface.  Currently, `t8code` is optimized for grid-based
+wide range of use cases. Currently, `t8code` is optimized for grid-based
 applications using face-to-face connectivity between elements, such as
 Finite-Volume and Discontinuous Galerkin methods. In the future, we plan to
 support node-to-node connectivity and hanging nodes resolution to further
