@@ -115,14 +115,14 @@ reached 1\%. It should be noted that `t8code`'s primary objective is to provide
 flexible adaptive mesh management. The layout of the data inside an element and its
 interpretation regarding, for example, when and how to refine/coarsen is up to
 the application linking against t8code.
+
 ![Visulization of a planetary mantle convection simulation (source: Institute
 of Planetary Research, DLR). Shown is the 2D slice of the temperatur profile.
 Left: original uniform data. The highlighting of the grid lines was omitted for
-visual clarity. Middle: adapted mesh with quad elements.  Right: adapted mesh
+visual clarity. Middle: adapted mesh with quad elements. Right: adapted mesh
 with triangle elements. The original data living on a uniform quad mesh was
 first transfered to a triangle mesh and adapted afterwards. This shows the
-versality of t8code regarding the choice of mesh elements.
-\label{fig:visploremesh}](pics/Gaia_original_vs_AMR.png){width="100%"}
+versatility of t8code regarding to the choice of mesh elements. \label{fig:visploremesh}](pics/Gaia_original_vs_AMR.png)
 
 # Fundamental Concepts
 
