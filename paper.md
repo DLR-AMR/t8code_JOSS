@@ -102,12 +102,27 @@ need for external mesh management libraries like `t8code`.
 Currently, `t8code`'s AMR routines support a wide range of element types:
 vertices, lines, quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and
 pyramids. Additionally, implementation of other refinement patterns and element
-shapes is possible.
-See \autoref{fig:visploremesh} for an examplary adapted mesh managed by `t8code` for visualizing
-earth mantle convection data.
-
-![2D slice of an adapted `t8code` mesh for a visualization of earth mantle convection data.
-\label{fig:visploremesh}](pics/visplore_magma_tilted_grid.png){width="70%"}
+shapes is possible. See \autoref{fig:visploremesh} for an examplary adapted
+mesh managed by `t8code` for visualizing the temperature profile of a convection
+simulation of a model planet's mantle (source: Institute of Planetary Research,
+DLR). The original, uniform mesh consists of over 158 million cells allocating
+6.818 GB of memory. By applying AMR to the data the memory usuage could be
+reduced to 20\% with an compression error of less then 1\%. The error meassure was
+chosen to be the norm of the variance between refinement/coarsening steps. That
+is, starting from the uniform mesh at highest refinement level ($l = 8$), the
+mesh was successively coarsened till the disagreement from the original data
+reached 1\%. It should be noted that `t8code`'s primary objective is to provide
+flexible adaptive mesh management. The layout of the data inside an element and its
+interpretation regarding, for example, when and how to refine/coarsen is up to
+the application linking against t8code.
+![Visulization of a planetary mantle convection simulation (source: Institute
+of Planetary Research, DLR). Shown is the 2D slice of the temperatur profile.
+Left: original uniform data. The highlighting of the grid lines was omitted for
+visual clarity. Middle: adapted mesh with quad elements.  Right: adapted mesh
+with triangle elements. The original data living on a uniform quad mesh was
+first transfered to a triangle mesh and adapted afterwards. This shows the
+versality of t8code regarding the choice of mesh elements.
+\label{fig:visploremesh}](pics/Gaia_original_vs_AMR.png){width="100%"}
 
 # Fundamental Concepts
 
@@ -147,13 +162,11 @@ problem via so-called mortar methods. In the future, it is planned to also
 support hanging nodes resolving routines by inserting transition elements
 conformally connecting elements at different refinement levels.
 
-![Left: Quad-tree of an exemplary forest mesh consisting of two trees (k0, k1)
+![Left: Exemplary t8code forest mesh consisting of two trees (k0, k1)
 distributed over three parallel processes p0 to p2. The SFC is represented by a
 black curve tracing only the finest elements (leaves) of each tree. Right:
-Sketch of the associated mixed shape mesh refined up to level three. Bottom
-left: The elements saved by p1 and the associated ghost elements (non process
-local neighbors).
-\label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid.png)
+Sketch of the associated mixed shape (a triangle and a quad) mesh refined up to
+level three. \label{fig:SpaceFillingCurves}](pics/t8code_sfc_hybrid_tree_vs_mesh.png)
 
 # Performance
 
