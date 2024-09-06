@@ -76,10 +76,13 @@ In this paper, we present our scalable dynamic adaptive mesh refinement (AMR)
 library `t8code`, which was officially released in 2022 [@Holke_t8code_2022].
 `t8code` is written in C/C++, open source, and readily available at
 [dlr-amr.github.io/t8code](https://dlr-amr.github.io/t8code/). It is developed
-and maintained at the [Institute for Software Technology](https://www.dlr.de/sc/en/)
-of the German Aerospace Center (DLR). The software library provides fast and memory
-efficient parallel algorithms for dynamic AMR to handle tasks such as mesh
-adaptation, load-balancing, ghost computation, feature search and more.
+and maintained at the [Institute for Software
+Technology](https://www.dlr.de/sc/en/) of the German Aerospace Center (DLR).
+AMR is a widely used method of locally adapting the mesh resolution according
+to an adequate error indicator in grid-based applications - especially in the
+context of computational fluid dynamics. Our software library provides fast and
+memory efficient parallel algorithms for dynamic AMR to handle tasks such as
+mesh adaptation, load-balancing, ghost computation, feature search and more.
 `t8code` can manage meshes with over one trillion mesh elements
 [@holke_optimized_2021] and scales up to one million parallel processes
 [@holke_scalable_2018]. It is intended to be used as mesh management backend in
@@ -88,8 +91,8 @@ high-performance applications of the upcoming exascale era.
 
 # Statement of Need
 
-Adaptive Mesh Refinement has been established as a successful approach
-for scientific and engineering simulations over the past decades
+Adaptive Mesh Refinement has been established as a successful approach for
+scientific and engineering simulations over the past decades
 [@TEUNISSEN2019106866; @10.1145/1268776.1268779; @doi:10.1137/0733054;
 @doi:10.1137/0715049]. By modifying the mesh resolution locally according to
 problem specific indicators, the computational power is efficiently
@@ -97,24 +100,40 @@ concentrated where needed and the overall memory usage is reduced by orders of
 magnitude. However, managing adaptive meshes and associated data is a very
 challenging task, especially for parallel codes. Implementing fast and scalable
 AMR routines generally leads to a large development overhead motivating the
-need for external mesh management libraries like `t8code`.
+need for external mesh management libraries like `t8code`. Our libraries target
+audience are scientists and application developers working on grid-based
+simulation and visulization frameworks who are looking for a comprehensive and
+versatile mesh management solution. Besides offering AMR we also aim to lower
+the threshold to parallelize their codes by solely interacting with t8code's
+API. Alternative AMR librarries with a similar range of features are p4est
+[@BursteddeWilcoxGhattas11], libMesh [@libMeshPaper], ParaMesh [@macneice2000paramesh], and
+SAMRAI [@gunney2013scalable]. 
 
-Currently, `t8code`'s AMR routines support a wide range of element types:
-vertices, lines, quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and
-pyramids. Additionally, implementation of other refinement patterns and element
-shapes is possible. See \autoref{fig:visploremesh} for an examplary adapted
-mesh managed by `t8code` for visualizing the temperature profile of a convection
-simulation of a model planet's mantle (source: Institute of Planetary Research,
-DLR). The original, uniform mesh consists of over 158 million cells allocating
-6.818 GB of memory. By applying AMR to the data the memory usuage could be
-reduced to 20\% with an compression error of less then 1\%. The error meassure was
-chosen to be the norm of the variance between refinement/coarsening steps. That
-is, starting from the uniform mesh at highest refinement level ($l = 8$), the
-mesh was successively coarsened till the disagreement from the original data
-reached 1\%. It should be noted that `t8code`'s primary objective is to provide
-flexible adaptive mesh management. The layout of the data inside an element and its
-interpretation regarding, for example, when and how to refine/coarsen is up to
-the application linking against t8code.
+In constrast to the other AMR solutions, only `t8code` natively supports
+recursive refinement on a wide range of element types: vertices, lines,
+quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and pyramids
+Additionally, extensions to other refinement patterns and element shapes are
+straightforwardly supported due to `t8code`s modular code structure and clear
+distinction between low- and high-level mesh operations [@holke2023t8code].
+Application developers usually interact with `t8code` via a callback interface.
+This gives our AMR solution a unique position in the market catering for a wide
+range of use cases. More information on `t8code`s feature set and on how to include
+it in an application can be found in [@holke2023t8code].
+
+See \autoref{fig:visploremesh} for an examplary adapted mesh managed by
+`t8code` using two different element types: quads and triangles. Shown is the
+temperature profile of a convection simulation of a model planet's mantle
+(source: Institute of Planetary Research, DLR). The original, uniform mesh
+consists of over 158 million quad cells allocating 6.818 GB of memory.  By
+applying AMR to the data the memory usuage could be reduced down to 20\% with
+an compression error of less then 1\%. The error meassure was chosen to be the
+norm of the variance between refinement resp. coarsening steps. That is,
+starting from the uniform mesh at highest refinement level ($l = 8$), the mesh
+was successively coarsened till the disagreement from the original data reached
+1\%. It should be noted that `t8code`'s primary objective is to provide
+flexible adaptive mesh management. The layout of the data inside an element and
+its interpretation regarding, for example, when and how to refine/coarsen is up
+to the application.
 
 ![Visulization of a planetary mantle convection simulation (source: Institute
 of Planetary Research, DLR). Shown is the 2D slice of the temperatur profile.
@@ -205,7 +224,8 @@ the number of processes.
 ![Runtimes on JUQUEEN of the solver and summed mesh operations of our DG
 prototype code coupled with `t8code`. Mesh operations are ghost computation,
 ghost data exchange, partitioning (load balancing), refinement and coarsening
-as well as balancing. t8code only takes around 15\% of the overall runtime.
+as well as balancing (max. difference of one level of refinement of neighboring
+elements). t8code only takes around 15\% of the overall runtime.
 Additionally, we see the weak scaling property of the application, i.e. the
 runtime halves when doubling the number of processes.
 \label{fig:t8code_runtimes}
