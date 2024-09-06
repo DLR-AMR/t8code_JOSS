@@ -75,7 +75,7 @@ bibliography: paper.bib
 In this paper, we present our scalable dynamic adaptive mesh refinement (AMR)
 library `t8code`, which was officially released in 2022 [@Holke_t8code_2022].
 `t8code` is written in C/C++, open source, and readily available at
-[www.dlr-amr.github.io/t8code](www.dlr-amr.github.io/t8code). It is developed
+[dlr-amr.github.io/t8code](https://dlr-amr.github.io/t8code/). It is developed
 and maintained at the [Institute for Software Technology](https://www.dlr.de/sc/en/)
 of the German Aerospace Center (DLR). The software library provides fast and memory
 efficient parallel algorithms for dynamic AMR to handle tasks such as mesh
@@ -112,7 +112,7 @@ earth mantle convection data.
 # Fundamental Concepts
 
 `t8code` is based on the forest-of-trees approach. Starting point
-for the usage of `t8code` is an unstructured input mesh, which
+for the usage of `t8code` is an unstructured conformal input mesh, which
 we denote a coarse mesh. This coarse mesh describes the geometry of the
 computational domain. Each of the coarse mesh cells is then viewed as the
 root of a refinement tree. These trees are refined recursively in a structured
@@ -139,6 +139,13 @@ low-level (element local) implementations. All high-level algorithms can
 be applied to different implementations of element shapes and refinement
 patterns. A mix of different element shapes in the same mesh is also
 supported.
+
+Mesh adapation as it is done in t8code leads to hanging nodes. Numerical
+methods have to speficially handle these non-conforming interfaces.
+Finite-Volume schemes or Discontinuous Galerkin methods naturally treat this
+problem via so-called mortar methods. In the future, it is planned to also
+support hanging nodes resolving routines by inserting transition elements
+conformally connecting elements at different refinement levels.
 
 ![Left: Quad-tree of an exemplary forest mesh consisting of two trees (k0, k1)
 distributed over three parallel processes p0 to p2. The SFC is represented by a
@@ -197,9 +204,10 @@ applications are planned to couple to this combination, including
 [SERGHEI](https://helmholtz.software/software/serghei).  Moreover, `t8code`
 also plays an important role in several DLR funded research projects, e.g.,
 [VisPlore](https://www.dlr.de/en/research-and-transfer/projects-and-missions/visplore)
-(massive data visualization), [HYTAZER](https://elib.dlr.de/201347/) (hydrogen tank certification), [Greenstars](https://www.dlr.de/en/ra/research-transfer/projects/dlr-projects/green-propulsion-free-flight-demonstrator-the-lander)
-(additive rocket engine manufacturing) and [PADME-AM](https://m2p2023.cimne.com/event/contribution/24a9d174-9411-11ed-b949-000c29ddfc0c) (simulation assisted
-additive manufacturing).
+(massive data visualization), [HYTAZER](https://elib.dlr.de/201347/) (hydrogen
+tank certification), and
+[Greenstars](https://www.dlr.de/en/ra/research-transfer/projects/dlr-projects/green-propulsion-free-flight-demonstrator-the-lander)
+(additive rocket engine manufacturing).
 
 # Further Information
 
