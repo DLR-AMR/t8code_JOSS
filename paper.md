@@ -12,6 +12,7 @@ authors:
   - name: Johannes Holke
     orcid: 0000-0002-2783-3286
     affiliation: 1
+    equal-contrib: true
   - name: Johannes Markert
     orcid: 0000-0001-6297-9494
     corresponding: true
@@ -112,15 +113,15 @@ quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and pyramids
 Additionally, extensions to other refinement patterns and element shapes are
 straightforwardly supported due to `t8code`'s modular code structure and clear
 distinction between low- and high-level mesh operations [@holke2023t8code].
-Application developers usually interact with `t8code` via a callback interface.
 This gives our AMR solution an unique position in the market catering for a
-wide range of use cases. Currently, `t8code` is optimized for grid-based
+wide range of use cases.  Application developers usually interact with `t8code`
+via a callback interface.  Currently, `t8code` is optimized for grid-based
 applications using face-to-face connectivity between elements, such as
 Finite-Volume and Discontinuous Galerkin methods. In the future, we plan to
 support node-to-node connectivity and hanging nodes resolution to further
 increase the range of applications, such as Finite Element methods. More
-information on `t8code`'s feature set and on how to include it in an application
-can be found in [@holke2023t8code].
+information on `t8code`'s feature set and on how to include it in an
+application can be found in [@holke2023t8code].
 
 # Exemplary application
 
@@ -152,7 +153,8 @@ versatility of t8code regarding to the choice of mesh elements. \label{fig:vispl
 `t8code` is based on the forest-of-trees approach. Starting point
 for the usage of `t8code` is an unstructured conformal input mesh, which
 we denote a coarse mesh. This coarse mesh describes the geometry of the
-computational domain. Each of the coarse mesh cells is then viewed as the
+computational domain and is usually provided by a mesh generator such as 
+Gmsh [@geuzaine2009gmsh]. Each of the coarse mesh cells is then viewed as the
 root of a refinement tree. These trees are refined recursively in a structured
 pattern, resulting in a collection of trees, which we call a forest. `t8code`
 stores only a minimal amount of information about the finest elements of the mesh -
