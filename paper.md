@@ -109,7 +109,7 @@ SAMRAI [@gunney2013scalable].
 
 In contrast to the other AMR solutions, only `t8code` natively supports
 recursive refinement on a wide range of element types: vertices, lines,
-quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and pyramids
+quadrilaterals, triangles, hexahedra, tetrahedra, prisms, and pyramids.
 Additionally, extensions to other refinement patterns and element shapes are
 straightforwardly supported due to `t8code`'s modular code structure and clear
 distinction between low- and high-level mesh operations [@holke2023t8code].
