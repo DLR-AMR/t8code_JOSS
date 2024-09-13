@@ -210,9 +210,9 @@ we compare the runtimes over number of processes of the DG solver and the
 summed mesh operations done by t8code which are ghost computation, ghost data
 exchange, partitioning (load balancing), refinement and coarsening as well as
 balancing ensuring only a difference of one refinement level among element's
-face neighbors. Additionally, from the graph we see the weak scaling property
-of the application, i.e. the runtime halves when doubling the number of
-processes.
+face neighbors. From the graphs in \autoref{fig:t8code_runtimes} we clearly
+see that `t8code` only takes around 15\% to 20\% of overall runtime compared
+to the solver.
 
 +----------------+-------------------+--------------------+--------+
 | \# Process     | \# Elements       | \# Elem. / process |  Ghost |
@@ -230,9 +230,7 @@ processes.
 prototype code coupled with `t8code`. Mesh operations are ghost computation,
 ghost data exchange, partitioning (load balancing), refinement and coarsening
 as well as balancing (max. difference of one level of refinement of neighboring
-elements). t8code only takes around 15\% of the overall runtime.
-Additionally, we see the weak scaling property of the application, i.e. the
-runtime halves when doubling the number of processes.
+elements). t8code only takes around 15\% to 20\% of the overall runtime.
 \label{fig:t8code_runtimes}
 ](pics/t8code-runtimes-simple.png){width="90%"}
 
