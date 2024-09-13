@@ -130,10 +130,10 @@ temperature profile of a convection simulation of a model planet's mantle
 (source: Institute of Planetary Research, DLR). The original, uniform mesh
 consists of over 158 million quad cells allocating 6.818 GB of memory.  By
 applying AMR to the data the memory usage could be reduced down to 20\% with
-an compression error of less then 1\%. The error measure was chosen to be the
+an compression error of less than 1\%. The error measure was chosen to be the
 norm of the variance between refinement resp. coarsening steps. That is,
 starting from the uniform mesh at highest refinement level ($l = 8$), the mesh
-was successively coarsened till the disagreement from the original data reached
+was successively coarsened until the disagreement from the original data reached
 1\%. It should be noted that `t8code`'s primary objective is to provide
 flexible adaptive mesh management. The layout of the data inside an element and
 its interpretation regarding, for example, when and how to refine/coarsen is up
@@ -149,8 +149,8 @@ versatility of t8code regarding to the choice of mesh elements. \label{fig:vispl
 
 # Fundamental Concepts
 
-`t8code` is based on the forest-of-trees approach. Starting point
-for the usage of `t8code` is an unstructured conformal input mesh, which
+`t8code` is based on the forest-of-trees approach. The starting point
+for usage of `t8code` is an unstructured conformal input mesh, which
 we denote a coarse mesh. This coarse mesh describes the geometry of the
 computational domain and is usually provided by a mesh generator such as 
 Gmsh [@geuzaine2009gmsh]. Each of the coarse mesh cells is then viewed as the
@@ -201,7 +201,7 @@ on the JUQUEEN and the JUWELS supercomputers at the Jülich Supercomputing
 Center. In \autoref{tab:t8code_runtimes}, [@holke_optimized_2021] we show that
 `t8code`'s ghost routine is exceptionally fast with proper scaling of up to 1.1
 trillion mesh elements. Computing ghost layers around parallel domains is
-usually the most expensive of all mesh operation. Furthermore, in a prototype
+usually the most expensive of all mesh operations. Furthermore, in a prototype
 code [@Dreyer2021] implementing a high-order discontinuous Galerkin method (DG)
 for advection-diffusion equations on dynamically adaptive hexahedral meshes we
 can report of a 12 times speed-up compared to non-AMR meshes with only an
