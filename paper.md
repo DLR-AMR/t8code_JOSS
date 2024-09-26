@@ -74,7 +74,7 @@ In this paper, we present our scalable dynamic adaptive mesh refinement (AMR)
 library `t8code`, which was officially released in 2022 [@Holke_t8code_2022].
 `t8code` is written in C/C++, open source, and readily available at
 [dlr-amr.github.io/t8code](https://dlr-amr.github.io/t8code/). It is developed
-and maintained at the [Institute for Software
+and maintained at the [Institute of Software
 Technology](https://www.dlr.de/sc/en/) of the German Aerospace Center (DLR).
 AMR is a widely used method of locally adapting the mesh resolution according
 to an adequate error indicator in grid-based applications - especially in the
@@ -276,7 +276,7 @@ Federal Ministry of Research and Education (BMBF) as part of the ADAPTEX and
 PADME-AM projects. Development work was performed as part of the Helmholtz School
 for Data Science in Life, Earth and Energy (HDS-LEE) and received funding from
 the Helmholtz Association of German Research Centres. The development team of
-`t8code` thanks the Institute for Software Technology and the German Aerospace
+`t8code` thanks the Institute of Software Technology and the German Aerospace
 Center (DLR).
 
 The authors state that there are no conflicts of interest.
