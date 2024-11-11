@@ -130,7 +130,7 @@ temperature profile of a convection simulation of a model planet's mantle
 (source: Institute of Planetary Research, DLR). The original, uniform mesh
 consists of over 158 million quad cells allocating 6.818 GB of memory.  By
 applying AMR to the data the memory usage could be reduced down to 20\% with
-an compression error of less than 1\%. The error measure was chosen to be the
+a compression error of less than 1\%. The error measure was chosen to be the
 norm of the variance between refinement resp. coarsening steps. That is,
 starting from the uniform mesh at highest refinement level ($l = 8$), the mesh
 was successively coarsened until the disagreement from the original data reached
@@ -215,13 +215,13 @@ and thus a bit less optimized, while supporting a wider range of element
 types.
 
 Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
-discontinuous Galerkin method (DG) for advection-diffusion equations on
+Discontinuous Galerkin (DG) method for advection-diffusion equations on
 dynamically adaptive hexahedral meshes we can report of a 12 times speed-up
 compared to non-AMR meshes with only an overall 15\% runtime contribution of
 `t8code`. In \autoref{fig:t8code_runtimes} we compare the runtimes over number
 of processes of the DG solver and the summed mesh operations done by t8code
 which are ghost computation, ghost data exchange, partitioning (load
-balancing), refinement and coarsening as well as balancing ensuring only a
+balancing), refinement, and coarsening as well as balancing ensuring only a
 difference of one refinement level among element's face neighbors. From the
 graphs in \autoref{fig:t8code_runtimes} we clearly see that `t8code` only takes
 around 15\% to 20\% of overall runtime compared to the solver.
