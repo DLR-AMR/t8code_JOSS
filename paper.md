@@ -201,18 +201,30 @@ on the JUQUEEN and the JUWELS supercomputers at the Jülich Supercomputing
 Center. In \autoref{tab:t8code_runtimes}, [@holke_optimized_2021] we show that
 `t8code`'s ghost routine is exceptionally fast with proper scaling of up to 1.1
 trillion mesh elements. Computing ghost layers around parallel domains is
-usually the most expensive of all mesh operations. Furthermore, in a prototype
-code [@Dreyer2021] implementing a high-order discontinuous Galerkin method (DG)
-for advection-diffusion equations on dynamically adaptive hexahedral meshes we
-can report of a 12 times speed-up compared to non-AMR meshes with only an
-overall 15\% runtime contribution of `t8code`. In \autoref{fig:t8code_runtimes}
-we compare the runtimes over number of processes of the DG solver and the
-summed mesh operations done by t8code which are ghost computation, ghost data
-exchange, partitioning (load balancing), refinement and coarsening as well as
-balancing ensuring only a difference of one refinement level among element's
-face neighbors. From the graphs in \autoref{fig:t8code_runtimes} we clearly
-see that `t8code` only takes around 15\% to 20\% of overall runtime compared
-to the solver.
+usually the most expensive of all mesh operations. To put these results into
+perspective, we conducted scaling tests on the terrabyte cluster
+[terrabyte.lrz.de] at Leibniz Computing Centre comparing the ghost layer
+creation runtimes of p4est and t8code. See \autoref{fig:t8code_runtimes} for
+the results. The p4est library has been established as one of the most
+performant meshing libraries [@BursteddeWilcoxGhattas11] specializing on
+adaptive quadrilateral and hexahedral meshes. Clearly, t8code shows near
+perfect scaling for tetrahedral meshes on par with p4est. The absolute runtime
+of t8code is around 1.5 times the runtime of p4est measured on a per ghost
+element basis. This is expected since the ghost layer algorithm is more complex
+and thus a bit less optimized due to the support of a wide range of element
+types.
+
+Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
+discontinuous Galerkin method (DG) for advection-diffusion equations on
+dynamically adaptive hexahedral meshes we can report of a 12 times speed-up
+compared to non-AMR meshes with only an overall 15\% runtime contribution of
+`t8code`. In \autoref{fig:t8code_runtimes} we compare the runtimes over number
+of processes of the DG solver and the summed mesh operations done by t8code
+which are ghost computation, ghost data exchange, partitioning (load
+balancing), refinement and coarsening as well as balancing ensuring only a
+difference of one refinement level among element's face neighbors. From the
+graphs in \autoref{fig:t8code_runtimes} we clearly see that `t8code` only takes
+around 15\% to 20\% of overall runtime compared to the solver.
 
 +----------------+-------------------+--------------------+--------+
 | \# Process     | \# Elements       | \# Elem. / process |  Ghost |
@@ -225,6 +237,16 @@ to the solver.
 | computation for a distributed mesh consisting of 1.1 trillion    |
 | elements. \label{tab:t8code_runtimes}                            |
 +================+===================+====================+========+
+
+![Runtimes of ghost layer creation on the terraybyte cluster
+[terrabyte.lrz.de] for p4est and t8code. The meshes have been refined into
+a Menger sponge for hexahedral mesh with p4est (max. level 12) and a Sierpinski
+sponge for the tetrahedral mesh in t8code (max. level 13) to create a fractal
+pattern with billions of elements as a stress test. To make the two runs
+comparable the runtimes have been divided by the average local number of ghost
+elements on a MPI rank.
+\label{fig:ghost_layer_runtimes}
+](pics/plot-timings-per-num-ghosts.png){width="90%"}
 
 ![Runtimes on JUQUEEN of the solver and summed mesh operations of our DG
 prototype code coupled with `t8code`. Mesh operations are ghost computation,
