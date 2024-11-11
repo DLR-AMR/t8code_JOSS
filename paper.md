@@ -203,7 +203,7 @@ Center. In \autoref{tab:t8code_runtimes}, [@holke_optimized_2021] we show that
 trillion mesh elements. Computing ghost layers around parallel domains is
 usually the most expensive of all mesh operations. To put these results into
 perspective, we conducted scaling tests on the terrabyte cluster
-[@terrabyte.lrz.de] at Leibniz Supercomputing Centre comparing the ghost layer
+at Leibniz Supercomputing Centre comparing the ghost layer
 creation runtimes of p4est and t8code. See \autoref{fig:ghost_layer_runtimes} for
 the results. The p4est library has been established as one of the most
 performant meshing libraries [@BursteddeWilcoxGhattas11] specializing on
@@ -238,13 +238,12 @@ around 15\% to 20\% of overall runtime compared to the solver.
 | elements. \label{tab:t8code_runtimes}                            |
 +================+===================+====================+========+
 
-![Runtimes of ghost layer creation on the terraybyte cluster
-[@terrabyte.lrz.de] for p4est and t8code. The meshes have been refined into
-a Menger sponge for hexahedral mesh with p4est (max. level 12) and a Sierpinski
-sponge for the tetrahedral mesh in t8code (max. level 13) to create a fractal
-pattern with billions of elements as a stress test. To make the two runs
-comparable the runtimes have been divided by the average local number of ghost
-elements on a MPI rank.
+![Runtimes of ghost layer creation on the terraybyte cluster for p4est and
+t8code. The meshes have been refined into a Menger sponge for hexahedral mesh
+with p4est (max. level 12) and a Sierpinski sponge for the tetrahedral mesh in
+t8code (max. level 13) to create a fractal pattern with billions of elements as
+a stress test. To make the two runs comparable the runtimes have been divided
+by the average local number of ghost elements on a MPI rank.
 \label{fig:ghost_layer_runtimes}
 ](pics/plot-timings-per-num-ghosts.png){width="90%"}
 
