@@ -21,5 +21,5 @@ set key bottom
 set title "Runtimes of ghost layer creation per ghost element over num. of proc."
 
 plot \
-  p4hex using 1:($2/$3 * 1e6) with lp lw 2 ps 2 title "p4est with hexhedral mesh (218 billion elements)", \
+  p4hex using 1:($2/$3 * 1e6) with lp lw 2 ps 2 title "p4est with hexahedral mesh (218 billion elements)", \
   t8tet using 1:($2/$3 * 1e6) with lp lw 2 ps 2 title "t8code with tetrahedral mesh (93 billion elements)"
