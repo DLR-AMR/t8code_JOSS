@@ -211,7 +211,7 @@ adaptive quadrilateral and hexahedral meshes. Clearly, t8code shows near
 perfect scaling for tetrahedral meshes on par with p4est. The absolute runtime
 of t8code is around 1.5 times the runtime of p4est measured on a per ghost
 element basis. This is expected since the ghost layer algorithm is more complex
-and thus a bit less optimized due to the support of a wide range of element
+and thus a bit less optimized, while supporting a wider range of element
 types.
 
 Furthermore, in a prototype code [@Dreyer2021] implementing a high-order
