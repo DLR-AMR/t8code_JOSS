@@ -68,7 +68,9 @@ authors:
   - name: Schoenlein, Kathrin
     affiliation: 1
   - name: Ackerschott, Jonas
+    affiliation: 10
   - name: Evgenii, Andreev
+    affiliation: 10
   - name: Csati, Zoltan
     affiliation: 4
   - name: Dutka, Alexandra
@@ -103,6 +105,8 @@ affiliations:
    index: 8
  - name: RWTH Aachen
    index: 9
+ - name: unaffiliated
+   index: 10
 
 date: 29 October 2024
 bibliography: paper.bib
