@@ -47,18 +47,63 @@ authors:
     orcid: 0000-0002-8384-9282
     equal-contrib: true
     affiliation: 1
+    orcid: 0000-0002-8384-9282
+  - Uenlue, Veli
+    equal-contrib: true
+    affiliation: 1
+  - Albers, Ole
+    equal-contrib: true
+    affiliation: 1
   - name: Carsten Burstedde
     orcid: 0000-0001-9843-1041
     affiliation: 2
   - name: Achim Basermann
     orcid: 0000-0003-3637-3231
     affiliation: 1
+  - Hergl, Chiara
+    orcid: 0000-0002-4016-9113
+    affiliation: 1
+  - Julia, Weber
+    affiliation: 1
+  - Schoenlein, Kathrin
+    affiliation: 1
+  - Ackerschott, Jonas
+  - Evgenii, Andreev
+  - Csati, Zoltan
+    affiliation: 4
+  - Dutka, Alexandra
+    affiliation: 4
+  - Geihe, Benedict
+    affiliation: 5
+  - Kestener, Pierre
+    affiliation: 6
+  - Kirby, Andrew
+    affiliation: 7
+  - Ranocha, Hendrik
+    affiliation: 8
+  - Schlottke-Lakemper, Michael
+    affiliation: 9
 
 affiliations:
  - name: German Aerospace Center (DLR), Institute of Software Technology, Department High-Performance Computing, Cologne, Germany
    index: 1
  - name: Rheinische Friedrich-Wilhelms-Universität Bonn, Institute for Numerical Simulations and Hausdorff Center for Mathematics,  Germany
    index: 2
+ - name: Forschungszentrum Juelich (JSC)
+   index: 3
+ - name: CERFACS
+   index: 4
+ - name: University of Cologne
+   index: 5
+ - name: CEA
+   index: 6
+ - name: University of Wyoming
+   index: 7
+ - name: University of Hamburg
+   index: 8
+ - name: RWTH Aachen
+   index: 9
+
 date: 20 November 2024
 bibliography: paper.bib
 
