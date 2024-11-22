@@ -104,7 +104,7 @@ affiliations:
  - name: RWTH Aachen
    index: 9
 
-date: 20 November 2024
+date: 29 October 2024
 bibliography: paper.bib
 
 # Optional fields if submitting to a AAS journal too, see this blog post:
