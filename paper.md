@@ -48,10 +48,10 @@ authors:
     equal-contrib: true
     affiliation: 1
     orcid: 0000-0002-8384-9282
-  - Uenlue, Veli
+  - name: Uenlue, Veli
     equal-contrib: true
     affiliation: 1
-  - Albers, Ole
+  - name: Albers, Ole
     equal-contrib: true
     affiliation: 1
   - name: Carsten Burstedde
@@ -60,28 +60,28 @@ authors:
   - name: Achim Basermann
     orcid: 0000-0003-3637-3231
     affiliation: 1
-  - Hergl, Chiara
+  - given-names: Hergl, Chiara
     orcid: 0000-0002-4016-9113
     affiliation: 1
-  - Julia, Weber
+  - name: Julia, Weber
     affiliation: 1
-  - Schoenlein, Kathrin
+  - name: Schoenlein, Kathrin
     affiliation: 1
-  - Ackerschott, Jonas
-  - Evgenii, Andreev
-  - Csati, Zoltan
+  - name: Ackerschott, Jonas
+  - name: Evgenii, Andreev
+  - name: Csati, Zoltan
     affiliation: 4
-  - Dutka, Alexandra
+  - name: Dutka, Alexandra
     affiliation: 4
-  - Geihe, Benedict
+  - name: Geihe, Benedict
     affiliation: 5
-  - Kestener, Pierre
+  - name: Kestener, Pierre
     affiliation: 6
-  - Kirby, Andrew
+  - name: Kirby, Andrew
     affiliation: 7
-  - Ranocha, Hendrik
+  - name: Ranocha, Hendrik
     affiliation: 8
-  - Schlottke-Lakemper, Michael
+  - name: Schlottke-Lakemper, Michael
     affiliation: 9
 
 affiliations:
