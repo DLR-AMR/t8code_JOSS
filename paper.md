@@ -141,8 +141,8 @@ high-performance applications of the upcoming exascale era.
 
 Adaptive Mesh Refinement has been established as a successful approach for
 scientific and engineering simulations over the past decades
-[@TEUNISSEN2019106866; @10.1145/1268776.1268779; @doi:10.1137/0733054;
-@doi:10.1137/0715049]. By modifying the mesh resolution locally according to
+[@TEUNISSEN2019106866; @DEAL2; @DOERFLER1996;
+@BABUVSKA1978]. By modifying the mesh resolution locally according to
 problem specific indicators, the computational power is efficiently
 concentrated where needed and the overall memory usage is reduced by orders of
 magnitude. However, managing adaptive meshes and associated data is a very
@@ -251,7 +251,7 @@ Center. In \autoref{tab:t8code_runtimes}, [@holke_optimized_2021] we show that
 trillion mesh elements. Computing ghost layers around parallel domains is
 usually the most expensive of all mesh operations. To put these results into
 perspective, we conducted scaling tests on the terrabyte cluster at Leibniz
-Supercomputing Centre comparing the ghost layer creation runtimes of p4est and
+Supercomputing Centre [@terrabytelrzde] comparing the ghost layer creation runtimes of p4est and
 t8code. In \autoref{fig:ghost_layer_runtimes} the measured runtimes of both
 libraries are plotted over the number of processes. The p4est library has been
 established as one of the most performant meshing libraries
