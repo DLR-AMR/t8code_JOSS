@@ -251,7 +251,7 @@ Center. In \autoref{tab:t8code_runtimes}, [@holke_optimized_2021] we show that
 trillion mesh elements. Computing ghost layers around parallel domains is
 usually the most expensive of all mesh operations. To put these results into
 perspective, we conducted scaling tests on the terrabyte cluster at Leibniz
-Supercomputing Centre [@terrabytelrzde] comparing the ghost layer creation runtimes of p4est and
+Supercomputing Centre comparing the ghost layer creation runtimes of p4est and
 t8code. In \autoref{fig:ghost_layer_runtimes} the measured runtimes of both
 libraries are plotted over the number of processes. The p4est library has been
 established as one of the most performant meshing libraries
