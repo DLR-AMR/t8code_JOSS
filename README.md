@@ -4,6 +4,28 @@ View the paper: [paper.pdf](https://github.com/DLR-AMR/t8code_JOSS/blob/main/pap
 
 Edit the paper: [paper.md](https://github.com/DLR-AMR/t8code_JOSS/blob/main/paper.md)
 
+## Official DOI link
+
+The paper has been officially published. The official DOI link is
+
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.06887/status.svg)](https://doi.org/10.21105/joss.06887)
+
+You can include above button as follow:
+
+```
+Markdown:
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.06887/status.svg)](https://doi.org/10.21105/joss.06887)
+
+HTML:
+<a style="border-width:0" href="https://doi.org/10.21105/joss.06887">
+  <img src="https://joss.theoj.org/papers/10.21105/joss.06887/status.svg" alt="DOI badge" >
+</a>
+
+reStructuredText:
+.. image:: https://joss.theoj.org/papers/10.21105/joss.06887/status.svg
+   :target: https://doi.org/10.21105/joss.06887
+```
+
 ## Intro
 
 The Journal of Open Source Software (JOSS) is a developer friendly journal for
