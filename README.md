@@ -26,6 +26,8 @@ reStructuredText:
    :target: https://doi.org/10.21105/joss.06887
 ```
 
+The review discussion thread is at https://github.com/openjournals/joss-reviews/issues/6887.
+
 ## Intro
 
 The Journal of Open Source Software (JOSS) is a developer friendly journal for
